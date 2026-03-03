@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>枝痛组 - 主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            primary: '#121212',
+                            secondary: '#1e1e1e',
+                            tertiary: '#2d2d2d',
+                            accent: '#e88388',
+                            gray: {
+                                100: '#f5f5f5',
+                                200: '#e0e0e0',
+                                300: '#bdbdbd',
+                                400: '#9e9e9e',
+                                500: '#757575',
+                                600: '#616161',
+                                700: '#424242',
+                                800: '#333333',
+                                900: '#212121',
+                            }
+                        },
+                        member: {
+                            beila: '#81d4fa',
+                            jiarran: '#ff8a9a',
+                            nailin: '#ffb74d',
+                            sinuo: '#a5d6a7',
+                            xinyi: '#ba68c8'
+                        }
+                    },
+                    fontFamily: {
+                        jp: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.2)',
+                        'hover': '0 8px 25px rgba(0, 0, 0, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            }
+            .card-hover {
+                transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            .card-hover:hover {
+                transform: translateY(-6px);
+                box-shadow: var(--tw-shadow-hover);
+            }
+            .radar-container {
+                height: 180px;
+                width: 100%;
+            }
+            .full-screen-section {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+            .bg-texture {
+                background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23333333' fill-opacity='0.3' fill-rule='evenodd'/%3E%3C/svg%3E");
+            }
+            /* 成员卡片背景样式 */
+            .member-card-bg {
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                position: relative;
+            }
+            .member-card-bg::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(18, 18, 18, 0.7);
+                z-index: 1;
+            }
+            .member-card-content {
+                position: relative;
+                z-index: 2;
+            }
+            /* 优化后的标签切换样式 - 核心修改 */
+            .tab-switcher {
+                position: relative;
+                max-width: none; /* 取消最大宽度限制 */
+                width: 75%; /* 占满容器宽度 */
+                margin: 0 auto;
+            }
+            /* 放大后的标签容器：100%宽度，更粗的分隔线 */
+            .tabs {
+                display: flex;
+                gap: 0;
+                border-bottom: 3px solid #2d2d2d; /* 加粗分隔线 */
+                margin: 0 auto 2rem;
+                width: 75%; /* 标签容器占满宽度 */
+            }
+            /* 放大的标签样式：更大的内边距和字体 */
+            .tab {
+                padding: 16px 48px; /* 大幅放大内边距 */
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: #bdbdbd; /* 未选中文字色 */
+                font-weight: 500;
+                font-size: 1.25rem; /* 放大字体 */
+                position: relative;
+                background-color: transparent;
+                flex: 1; /* 标签均分宽度 */
+                text-align: center; /* 文字居中 */
+            }
+            /* 选中标签的下划线：更粗更醒目 */
+            .tab.active {
+                color: #e88388; /* accent色，保留原有配色 */
+            }
+            .tab.active::after {
+                content: '';
+                position: absolute;
+                bottom: -3px; /* 匹配加粗的分隔线 */
+                left: 0;
+                width: 75%;
+                height: 3px; /* 加粗下划线 */
+                background-color: #e88388; /* accent色，保留原有配色 */
+            }
+            /* 悬浮效果 */
+            .tab:hover {
+                color: #e88388;
+                background-color: rgba(232, 131, 136, 0.1); /* 浅accent背景，保留原有配色 */
+            }
+            /* 优化的内容区动画：仅保留透明度，消除跳动感 */
+            .tab-content {
+                transition: opacity 0s ease; /* 仅透明度过渡，移除位移 */
+                opacity: 0;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+            .tab-content.active {
+                opacity: 1;
+                pointer-events: all;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark-primary font-jp text-dark-gray-200 antialiased">
+    <!-- 顶栏导航 -->
+    <header class="fixed w-full top-0 z-50 bg-dark-secondary/95 backdrop-blur-sm transition-all duration-500" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo区域：枝江娱乐 + A-SOUL + 枝痛组 -->
+            <div class="flex items-center gap-4">
+                <!-- 枝江娱乐Logo（占位） -->
+                <div class="w-10 h-10 bg-dark-tertiary rounded-full flex items-center justify-center">
+                    <span class="text-xs text-dark-gray-300">枝江</span>
+                </div>
+                <!-- A-SOUL Logo（占位） -->
+                <div class="w-10 h-10 bg-dark-tertiary rounded-full flex items-center justify-center">
+                    <span class="text-xs text-dark-gray-300">A-SOUL</span>
+                </div>
+                <!-- 枝痛组Logo+文字 -->
+                <a href="#" class="text-xl sm:text-2xl font-medium flex items-center gap-2" id="homeLink">
+                    <i class="fa-solid fa-car-side text-dark-accent"></i>
+                    <span>枝痛组</span>
+                </a>
+            </div>
+            
+            <!-- 桌面端导航菜单 -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 nav-link" data-target="home">主页</a>
+                <a href="#" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link" data-target="intro-section">痛车组&枝江娱乐</a>
+                <a href="paincar.html" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link" data-target="paincar">痛车展示</a>
+                <a href="works.html" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link" data-target="works">专辑作品&舞台</a>
+            </nav>
+            
+            <!-- 移动端菜单按钮 -->
+            <button class="md:hidden text-lg text-dark-gray-200" id="menuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div class="md:hidden hidden bg-dark-secondary shadow-soft absolute w-full" id="mobileMenu">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#" class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link" data-target="home">主页</a>
+                <a href="#" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link" data-target="intro-section">痛车组&枝江娱乐</a>
+                <a href="paincar.html" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link" data-target="paincar">痛车展示</a>
+                <a href="works.html" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 mobile-nav-link" data-target="works">专辑作品&舞台</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主页核心内容：成员合照 + Slogan -->
+    <section id="home" class="h-screen flex items-center justify-center bg-dark-primary bg-texture relative overflow-hidden">
+        <!-- 成员合照背景 -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-dark-primary/70"></div>
+            <img src="https://picsum.photos/id/1071/1920/1080" alt="枝江成员合照" class="w-full h-full object-cover">
+        </div>
+        
+        <!-- Slogan悬浮层 -->
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-[clamp(2rem,7vw,4rem)] font-light text-white text-shadow mb-6 tracking-wider">
+                枝痛组
+            </h1>
+            <p class="text-[clamp(0.9rem,2vw,1.2rem)] text-dark-gray-100 max-w-xl mx-auto mb-10 leading-relaxed text-shadow">
+                以枝江成员为魂 · 以痛车文化为翼 · 连接虚拟与现实的热爱
+            </p>
+            <a href="#" class="inline-block bg-dark-tertiary text-dark-gray-100 px-8 py-3 rounded-full text-sm font-medium shadow-soft hover:shadow-hover transition-all duration-300 border border-dark-gray-700 nav-link" data-target="intro-section">
+                了解更多 <i class="fa-solid fa-arrow-down ml-2 text-xs"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 标签切换介绍区域 + 成员介绍（移除"关于我们"标题） -->
+    <section id="intro-section" class="full-screen-section bg-dark-primary bg-texture">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <!-- 标签切换介绍区域（移除"关于我们"标题） -->
+            <div class="mb-20">
+                <!-- 标签切换容器 -->
+                <div class="tab-switcher">
+                    <!-- 放大后的切换标签 -->
+                    <div class="tabs" id="introTabs">
+                        <div class="tab" data-tab="zhijiang">枝江娱乐</div>
+                        <div class="tab active" data-tab="zhitong">枝痛组</div>
+                    </div>                    
+                    
+                    <!-- 标签内容：枝江娱乐 -->
+                    <div class="tab-content" id="zhijiangContent">
+                        <div class="max-w-4xl mx-auto bg-dark-secondary/50 rounded-2xl p-8 sm:p-12 shadow-soft">
+                            <h3 class="text-xl sm:text-2xl font-medium mb-8 text-center text-dark-gray-100 font-jp">关于枝江娱乐</h3>
+                            <!-- <div class="w-20 h-[2px] bg-dark-accent mx-auto mb-12"></div> -->
+                            <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg">
+                                <p class="text-left">
+                                    枝江娱乐是国内顶尖的虚拟偶像运营品牌，旗下拥有A-SOUL等多个标杆性虚拟偶像团体，致力于通过高品质的内容创作和创新的互动形式，打造有温度、有影响力的虚拟偶像IP。
+                                </p>
+                                <p class="text-left">
+                                    A-SOUL作为枝江娱乐的核心团体，自2020年出道以来，凭借专业的舞台表现、真实的人格塑造和深度的粉丝互动，成为虚拟偶像行业的标杆。
+                                </p>
+                                <p class="text-left">
+                                    2023年推出的「闪耀舞台」二期计划，延续了枝江娱乐的高品质制作理念，为虚拟偶像行业注入了新的活力。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <!-- 标签内容：枝痛组 -->
+                    <div class="tab-content active" id="zhitongContent">
+                        <div class="max-w-4xl mx-auto bg-dark-secondary/50 rounded-2xl p-8 sm:p-12 shadow-soft">
+                            <h3 class="text-xl sm:text-2xl font-medium mb-8 text-center text-dark-gray-100 font-jp">关于枝痛组</h3>
+                            <!-- <div class="w-20 h-[2px] bg-dark-accent mx-auto mb-12"></div> -->
+                            <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg">
+                                <p class="text-left">
+                                    枝痛组是由一群热爱枝江虚拟偶像文化与痛车文化的粉丝自发组建的兴趣团体，成立于2022年，核心围绕A-SOUL现役成员（贝拉、嘉然、乃琳）及枝江二期「闪耀舞台」成员（思诺Gladys、心宜Fiona）打造专属主题痛车。
+                                </p>
+                                <p class="text-left">
+                                    我们坚持"还原角色特质、兼顾视觉美感、传递正向文化"的设计理念，每一台痛车都经过精心打磨，既保留枝江成员的核心人设特征，又融合汽车美学与涂装工艺。
+                                </p>
+                                <p class="text-left">
+                                    枝痛组不仅专注于痛车的设计与制作，还定期组织线下展示、车友交流等活动，搭建起虚拟偶像文化与汽车文化的沟通桥梁。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 成员介绍板块（完全保留原有设计） -->
+            <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-light mb-12 text-center text-dark-gray-100 tracking-wide">枝江娱乐成员</h2>
+            
+            <!-- 左右分栏：A-SOUL + 闪耀舞台 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- A-SOUL 板块 -->
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-medium mb-8 text-center text-dark-gray-100 pb-4 border-b border-dark-gray-700">A-SOUL 成员</h3>
+                    <p class="text-center text-dark-gray-400 mb-10">国内虚拟偶像领域标杆性团体，高质量舞台与强互动性粉丝运营的代表</p>
+                    
+                    <!-- A-SOUL成员横向排列 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- 贝拉 -->
+                        <div class="member-card-bg bg-member-beila/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/11/800/1200');">
+                            <div class="member-card-content p-6 h-full flex flex-col">
+                                <!-- 头像 -->
+                                <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
+                                    <img src="https://picsum.photos/id/11/200/200" alt="贝拉头像" class="w-full h-full object-cover">
+                                </div>
+                                
+                                <!-- B站ID -->
+                                <h4 class="text-center text-lg font-medium mb-2 text-member-beila">@贝拉kira</h4>
+                                
+                                <!-- 一句话简介 -->
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">实力超强的舞蹈王者，暖心队长</p>
+                                
+                                <!-- 基础信息 -->
+                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>7月17日</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>贝极星</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>深海蓝</p>
+                                </div>
+                                
+                                <!-- 分割线 -->
+                                <div class="w-8 h-[1px] bg-member-beila/50 mx-auto mb-4"></div>
+                                
+                                <!-- B站简介 & 人设特点 -->
+                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
+                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>A-SOUL_贝拉，喜欢跳舞的小贝拉~</p>
+                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>外冷内热的暖心队长，性格直爽有担当，舞蹈实力拉满</p>
+                                </div>
+                                
+                                <!-- 雷达图 -->
+                                <div class="radar-container mt-auto">
+                                    <canvas id="beilaChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 嘉然 -->
+                        <div class="member-card-bg bg-member-jiarran/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/13/800/1200');">
+                            <div class="member-card-content p-6 h-full flex flex-col">
+                                <!-- 头像 -->
+                                <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
+                                    <img src="https://picsum.photos/id/13/200/200" alt="嘉然头像" class="w-full h-full object-cover">
+                                </div>
+                                
+                                <!-- B站ID -->
+                                <h4 class="text-center text-lg font-medium mb-2 text-member-jiarran">@嘉然今天吃什么</h4>
+                                
+                                <!-- 一句话简介 -->
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">软萌可爱的小草莓，团队元气小太阳</p>
+                                
+                                <!-- 基础信息 -->
+                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>3月7日</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>嘉心糖</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>草莓红</p>
+                                </div>
+                                
+                                <!-- 分割线 -->
+                                <div class="w-8 h-[1px] bg-member-jiarran/50 mx-auto mb-4"></div>
+                                
+                                <!-- B站简介 & 人设特点 -->
+                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
+                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>A-SOUL_嘉然，今天也要好好吃饭！</p>
+                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>治愈系笑容，温柔又有韧性，干饭第一名</p>
+                                </div>
+                                
+                                <!-- 雷达图 -->
+                                <div class="radar-container mt-auto">
+                                    <canvas id="jiarranChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 乃琳 -->
+                        <div class="member-card-bg bg-member-nailin/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/14/800/1200');">
+                            <div class="member-card-content p-6 h-full flex flex-col">
+                                <!-- 头像 -->
+                                <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
+                                    <img src="https://picsum.photos/id/14/200/200" alt="乃琳头像" class="w-full h-full object-cover">
+                                </div>
+                                
+                                <!-- B站ID -->
+                                <h4 class="text-center text-lg font-medium mb-2 text-member-nailin">@乃琳Queen</h4>
+                                
+                                <!-- 一句话简介 -->
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">优雅知性的大姐姐，团队氛围调节者</p>
+                                
+                                <!-- 基础信息 -->
+                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>8月8日</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>奶淇琳</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>暖橙色</p>
+                                </div>
+                                
+                                <!-- 分割线 -->
+                                <div class="w-8 h-[1px] bg-member-nailin/50 mx-auto mb-4"></div>
+                                
+                                <!-- B站简介 & 人设特点 -->
+                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
+                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>A-SOUL_乃琳，优雅永不过时~</p>
+                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>情商高口才好，温柔中带着小调皮，主持担当</p>
+                                </div>
+                                
+                                <!-- 雷达图 -->
+                                <div class="radar-container mt-auto">
+                                    <canvas id="nailinChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 闪耀舞台 板块 -->
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-medium mb-8 text-center text-dark-gray-100 pb-4 border-b border-dark-gray-700">枝江二期「闪耀舞台」</h3>
+                    <p class="text-center text-dark-gray-400 mb-10">延续枝江文化，带来全新风格的新生代虚拟偶像</p>
+                    
+                    <!-- 闪耀舞台成员横向排列 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 思诺Gladys -->
+                        <div class="member-card-bg bg-member-sinuo/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/15/800/1200');">
+                            <div class="member-card-content p-6 h-full flex flex-col">
+                                <!-- 头像 -->
+                                <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
+                                    <img src="https://picsum.photos/id/15/200/200" alt="思诺头像" class="w-full h-full object-cover">
+                                </div>
+                                
+                                <!-- B站ID -->
+                                <h4 class="text-center text-lg font-medium mb-2 text-member-sinuo">@思诺Gladys</h4>
+                                
+                                <!-- 一句话简介 -->
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">元气满满的活力少女，气氛活跃器</p>
+                                
+                                <!-- 基础信息 -->
+                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>4月12日</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>诺米</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>青柠绿</p>
+                                </div>
+                                
+                                <!-- 分割线 -->
+                                <div class="w-8 h-[1px] bg-member-sinuo/50 mx-auto mb-4"></div>
+                                
+                                <!-- B站简介 & 人设特点 -->
+                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
+                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>枝江二期-思诺，元气满满向前冲！</p>
+                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>性格开朗直爽，天然呆，说唱和架子鼓超棒</p>
+                                </div>
+                                
+                                <!-- 雷达图 -->
+                                <div class="radar-container mt-auto">
+                                    <canvas id="sinuoChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 心宜Fiona -->
+                        <div class="member-card-bg bg-member-xinyi/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/16/800/1200');">
+                            <div class="member-card-content p-6 h-full flex flex-col">
+                                <!-- 头像 -->
+                                <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
+                                    <img src="https://picsum.photos/id/16/200/200" alt="心宜头像" class="w-full h-full object-cover">
+                                </div>
+                                
+                                <!-- B站ID -->
+                                <h4 class="text-center text-lg font-medium mb-2 text-member-xinyi">@心宜Fiona</h4>
+                                
+                                <!-- 一句话简介 -->
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">温柔治愈系少女，细节控声乐担当</p>
+                                
+                                <!-- 基础信息 -->
+                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>9月21日</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>宜家人</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>紫藤紫</p>
+                                </div>
+                                
+                                <!-- 分割线 -->
+                                <div class="w-8 h-[1px] bg-member-xinyi/50 mx-auto mb-4"></div>
+                                
+                                <!-- B站简介 & 人设特点 -->
+                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
+                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>枝江二期-心宜，用歌声治愈你~</p>
+                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>慢热型人格，美声超棒，记忆力超群的细节控</p>
+                                </div>
+                                
+                                <!-- 雷达图 -->
+                                <div class="radar-container mt-auto">
+                                    <canvas id="xinyiChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部版权信息 -->
+    <footer class="bg-dark-secondary py-8 border-t border-dark-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h3 class="text-xl font-light mb-2">枝痛组</h3>
+                    <p class="text-dark-gray-500 text-sm">以热爱为名 · 为枝江而行</p>
+                </div>
+                <div class="flex space-x-6 text-lg">
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-bilibili"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-weibo"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-wechat"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-solid fa-car"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-dark-gray-800 mt-8 pt-8 text-center text-dark-gray-600 text-sm">
+                <p>© 2025 枝痛组 官方网站 | 本网站仅作粉丝文化展示使用</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-3', 'shadow-soft');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-3', 'shadow-soft');
+            }
+        });
+
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // 导航点击逻辑
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const target = this.getAttribute('data-target');
+                
+                // 如果是外部链接（痛车展示/作品舞台），不阻止默认行为
+                if (target === 'paincar' || target === 'works') {
+                    return;
+                }
+                
+                // 阻止默认跳转
+                e.preventDefault();
+                
+                // 主页回到顶部
+                if (target === 'home') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // 锚点滚动到对应区域
+                    const targetElement = document.getElementById(target);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                
+                // 关闭移动端菜单
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // 标签切换逻辑（优化动画）
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            // 悬浮切换
+            tab.addEventListener('mouseenter', function() {
+                // 移除所有标签的激活样式
+                tabs.forEach(t => t.classList.remove('active'));
+                // 激活当前标签
+                this.classList.add('active');
+                
+                // 隐藏所有内容
+                tabContents.forEach(content => content.classList.remove('active'));
+                // 显示对应内容
+                const targetTab = this.getAttribute('data-tab');
+                document.getElementById(`${targetTab}Content`).classList.add('active');
+            });
+            
+            // 点击也可切换（增强可用性）
+            tab.addEventListener('click', function() {
+                // 移除所有标签的激活样式
+                tabs.forEach(t => t.classList.remove('active'));
+                // 激活当前标签
+                this.classList.add('active');
+                
+                // 隐藏所有内容
+                tabContents.forEach(content => content.classList.remove('active'));
+                // 显示对应内容
+                const targetTab = this.getAttribute('data-tab');
+                document.getElementById(`${targetTab}Content`).classList.add('active');
+            });
+        });
+
+        // 雷达图配置（折线样式 + 深色模式适配）
+        const radarOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    pointLabels: {
+                        font: { size: 9, family: '"Noto Sans JP", sans-serif' },
+                        color: '#bdbdbd'
+                    },
+                    ticks: {
+                        backdropColor: 'transparent',
+                        stepSize: 20,
+                        max: 100,
+                        min: 0,
+                        display: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            elements: {
+                line: {
+                    tension: 0, // 关键：0表示折线，取消曲线
+                    borderWidth: 1.5
+                },
+                point: {
+                    radius: 2,
+                    hoverRadius: 4
+                }
+            }
+        };
+
+        // 贝拉雷达图
+        new Chart(document.getElementById('beilaChart'), {
+            type: 'radar',
+            data: {
+                labels: ['歌力', '舞力', '游戏力', '杂谈力', '特殊能力'],
+                datasets: [{
+                    label: '贝拉',
+                    data: [75, 95, 65, 70, 10],
+                    backgroundColor: 'rgba(129, 212, 250, 0.1)',
+                    borderColor: 'rgba(129, 212, 250, 0.8)',
+                    pointBackgroundColor: 'rgba(129, 212, 250, 1)',
+                }]
+            },
+            options: radarOptions
+        });
+
+        // 嘉然雷达图
+        new Chart(document.getElementById('jiarranChart'), {
+            type: 'radar',
+            data: {
+                labels: ['歌力', '舞力', '游戏力', '杂谈力', '特殊能力'],
+                datasets: [{
+                    label: '嘉然',
+                    data: [80, 75, 60, 85, 95],
+                    backgroundColor: 'rgba(255, 138, 154, 0.1)',
+                    borderColor: 'rgba(255, 138, 154, 0.8)',
+                    pointBackgroundColor: 'rgba(255, 138, 154, 1)',
+                }]
+            },
+            options: radarOptions
+        });
+
+        // 乃琳雷达图
+        new Chart(document.getElementById('nailinChart'), {
+            type: 'radar',
+            data: {
+                labels: ['歌力', '舞力', '游戏力', '杂谈力', '特殊能力'],
+                datasets: [{
+                    label: '乃琳',
+                    data: [80, 70, 75, 95, 10],
+                    backgroundColor: 'rgba(255, 183, 77, 0.1)',
+                    borderColor: 'rgba(255, 183, 77, 0.8)',
+                    pointBackgroundColor: 'rgba(255, 183, 77, 1)',
+                }]
+            },
+            options: radarOptions
+        });
+
+        // 思诺雷达图
+        new Chart(document.getElementById('sinuoChart'), {
+            type: 'radar',
+            data: {
+                labels: ['歌力', '舞力', '游戏力', '杂谈力', '特殊能力'],
+                datasets: [{
+                    label: '思诺',
+                    data: [75, 80, 85, 90, 20],
+                    backgroundColor: 'rgba(165, 214, 167, 0.1)',
+                    borderColor: 'rgba(165, 214, 167, 0.8)',
+                    pointBackgroundColor: 'rgba(165, 214, 167, 1)',
+                }]
+            },
+            options: radarOptions
+        });
+
+        // 心宜雷达图
+        new Chart(document.getElementById('xinyiChart'), {
+            type: 'radar',
+            data: {
+                labels: ['歌力', '舞力', '游戏力', '杂谈力', '特殊能力'],
+                datasets: [{
+                    label: '心宜',
+                    data: [90, 70, 65, 75, 90],
+                    backgroundColor: 'rgba(186, 104, 200, 0.1)',
+                    borderColor: 'rgba(186, 104, 200, 0.8)',
+                    pointBackgroundColor: 'rgba(186, 104, 200, 1)',
+                }]
+            },
+            options: radarOptions
+        });
+    </script>
+</body>
+</html>
