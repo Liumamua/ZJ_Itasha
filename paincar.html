@@ -73,46 +73,71 @@
     </style>
 </head>
 <body class="bg-dark-primary font-jp text-dark-gray-200 antialiased">
-    <!-- 顶栏导航 -->
-    <header class="fixed w-full top-0 z-50 bg-dark-secondary/95 backdrop-blur-sm transition-all duration-500" id="navbar">
+     <!-- 顶栏导航 - 修复宽度变化问题 + 替换Logo（修复onerror） -->
+    <header class="fixed w-full top-0 z-50 bg-dark-secondary/95 backdrop-blur-sm transition-all duration-500"
+        id="navbar">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Logo区域 -->
+            <!-- Logo区域：枝江娱乐 + A-SOUL + 枝痛组 - 移除圆形容器，修复onerror -->
             <div class="flex items-center gap-4">
-                <div class="w-10 h-10 bg-dark-tertiary rounded-full flex items-center justify-center">
-                    <span class="text-xs text-dark-gray-300">枝江</span>
+                <!-- 枝江娱乐Logo（透明底 ZJ_Enter.png）- 修复onerror -->
+                <div class="h-10 flex items-center justify-center">
+                    <img src="/pictures/logos/ZJ_Enter.png" alt="枝江娱乐Logo" class="h-full object-contain" id="zjLogo">
+                    <!-- 备用占位元素（提前创建，默认隐藏） -->
+                    <span class="hidden text-xs text-dark-gray-300 ml-2" id="zjLogoFallback">枝江</span>
                 </div>
-                <div class="w-10 h-10 bg-dark-tertiary rounded-full flex items-center justify-center">
-                    <span class="text-xs text-dark-gray-300">A-SOUL</span>
+
+                <!-- A-SOUL Logo（透明底 A-SOUL.png）- 修复onerror -->
+                <div class="h-6 flex items-center justify-center">
+                    <img src="/pictures/logos/A-SOUL.png" alt="A-SOUL Logo" class="h-full object-contain"
+                        id="asoulLogo">
+                    <!-- 备用占位元素（提前创建，默认隐藏） -->
+                    <span class="hidden text-xs text-dark-gray-300 ml-2" id="asoulLogoFallback">A-SOUL</span>
                 </div>
-                <a href="index.html" class="text-xl sm:text-2xl font-medium flex items-center gap-2">
+
+                <!-- 枝痛组Logo+文字 -->
+                <a href="#" class="text-xl sm:text-2xl font-medium flex items-center gap-2" id="homeLink">
                     <i class="fa-solid fa-car-side text-dark-accent"></i>
                     <span>枝痛组</span>
                 </a>
             </div>
-            
-            <!-- 桌面端导航 -->
+
+            <!-- 桌面端导航菜单 -->
             <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">主页</a>
-                <a href="index.html#zhitong-intro" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">痛车组介绍</a>
-                <a href="index.html#zhijiang" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">枝江娱乐</a>
-                <a href="#" class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300">痛车展示</a>
-                <a href="works.html" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">专辑作品&舞台</a>
+                <a href="#"
+                    class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="home">主页</a>
+                <a href="#"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="intro-section">痛车组&枝江娱乐</a>
+                <a href="paincar.html"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="paincar">痛车展示</a>
+                <a href="works.html"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="works">专辑作品&舞台</a>
             </nav>
-            
+
             <!-- 移动端菜单按钮 -->
             <button class="md:hidden text-lg text-dark-gray-200" id="menuBtn">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        
+
         <!-- 移动端导航菜单 -->
         <div class="md:hidden hidden bg-dark-secondary shadow-soft absolute w-full" id="mobileMenu">
             <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
-                <a href="index.html" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">主页</a>
-                <a href="index.html#zhitong-intro" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">痛车组介绍</a>
-                <a href="index.html#zhijiang" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">枝江娱乐</a>
-                <a href="#" class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">痛车展示</a>
-                <a href="works.html" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2">专辑作品&舞台</a>
+                <a href="#"
+                    class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
+                    data-target="home">主页</a>
+                <a href="#"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
+                    data-target="intro-section">痛车组&枝江娱乐</a>
+                <a href="paincar.html"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
+                    data-target="paincar">痛车展示</a>
+                <a href="works.html"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 mobile-nav-link"
+                    data-target="works">专辑作品&舞台</a>
             </div>
         </div>
     </header>

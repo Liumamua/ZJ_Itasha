@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -31,9 +33,9 @@
                             }
                         },
                         member: {
-                            beila: '#81d4fa',
-                            jiarran: '#ff8a9a',
-                            nailin: '#ffb74d',
+                            beila: '#DB7D74',
+                            jiarran: '#E799B0',
+                            nailin: '#576690',
                             sinuo: '#a5d6a7',
                             xinyi: '#ba68c8'
                         }
@@ -100,7 +102,7 @@
             .tab-switcher {
                 position: relative;
                 max-width: none; /* 取消最大宽度限制 */
-                width: 75%; /* 占满容器宽度 */
+                width: 80%; /* 占满容器宽度 */
                 margin: 0 auto;
             }
             /* 放大后的标签容器：100%宽度，更粗的分隔线 */
@@ -109,7 +111,7 @@
                 gap: 0;
                 border-bottom: 3px solid #2d2d2d; /* 加粗分隔线 */
                 margin: 0 auto 2rem;
-                width: 75%; /* 标签容器占满宽度 */
+                width: 80%; /* 标签容器占满宽度 */
             }
             /* 放大的标签样式：更大的内边距和字体 */
             .tab {
@@ -133,7 +135,7 @@
                 position: absolute;
                 bottom: -3px; /* 匹配加粗的分隔线 */
                 left: 0;
-                width: 75%;
+                width: 100%;
                 height: 3px; /* 加粗下划线 */
                 background-color: #e88388; /* accent色，保留原有配色 */
             }
@@ -160,48 +162,73 @@
         }
     </style>
 </head>
+
 <body class="bg-dark-primary font-jp text-dark-gray-200 antialiased">
-    <!-- 顶栏导航 -->
-    <header class="fixed w-full top-0 z-50 bg-dark-secondary/95 backdrop-blur-sm transition-all duration-500" id="navbar">
+    <!-- 顶栏导航 - 修复宽度变化问题 + 替换Logo（修复onerror） -->
+    <header class="fixed w-full top-0 z-50 bg-dark-secondary/95 backdrop-blur-sm transition-all duration-500"
+        id="navbar">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Logo区域：枝江娱乐 + A-SOUL + 枝痛组 -->
+            <!-- Logo区域：枝江娱乐 + A-SOUL + 枝痛组 - 移除圆形容器，修复onerror -->
             <div class="flex items-center gap-4">
-                <!-- 枝江娱乐Logo（占位） -->
-                <div class="w-10 h-10 bg-dark-tertiary rounded-full flex items-center justify-center">
-                    <span class="text-xs text-dark-gray-300">枝江</span>
+                <!-- 枝江娱乐Logo（透明底 ZJ_Enter.png）- 修复onerror -->
+                <div class="h-10 flex items-center justify-center">
+                    <img src="/pictures/logos/ZJ_Enter.png" alt="枝江娱乐Logo" class="h-full object-contain" id="zjLogo">
+                    <!-- 备用占位元素（提前创建，默认隐藏） -->
+                    <span class="hidden text-xs text-dark-gray-300 ml-2" id="zjLogoFallback">枝江</span>
                 </div>
-                <!-- A-SOUL Logo（占位） -->
-                <div class="w-10 h-10 bg-dark-tertiary rounded-full flex items-center justify-center">
-                    <span class="text-xs text-dark-gray-300">A-SOUL</span>
+
+                <!-- A-SOUL Logo（透明底 A-SOUL.png）- 修复onerror -->
+                <div class="h-6 flex items-center justify-center">
+                    <img src="/pictures/logos/A-SOUL.png" alt="A-SOUL Logo" class="h-full object-contain"
+                        id="asoulLogo">
+                    <!-- 备用占位元素（提前创建，默认隐藏） -->
+                    <span class="hidden text-xs text-dark-gray-300 ml-2" id="asoulLogoFallback">A-SOUL</span>
                 </div>
+
                 <!-- 枝痛组Logo+文字 -->
                 <a href="#" class="text-xl sm:text-2xl font-medium flex items-center gap-2" id="homeLink">
                     <i class="fa-solid fa-car-side text-dark-accent"></i>
                     <span>枝痛组</span>
                 </a>
             </div>
-            
+
             <!-- 桌面端导航菜单 -->
             <nav class="hidden md:flex space-x-8">
-                <a href="#" class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 nav-link" data-target="home">主页</a>
-                <a href="#" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link" data-target="intro-section">痛车组&枝江娱乐</a>
-                <a href="paincar.html" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link" data-target="paincar">痛车展示</a>
-                <a href="works.html" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link" data-target="works">专辑作品&舞台</a>
+                <a href="#"
+                    class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="home">主页</a>
+                <a href="#"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="intro-section">痛车组&枝江娱乐</a>
+                <a href="paincar.html"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="paincar">痛车展示</a>
+                <a href="works.html"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="works">专辑作品&舞台</a>
             </nav>
-            
+
             <!-- 移动端菜单按钮 -->
             <button class="md:hidden text-lg text-dark-gray-200" id="menuBtn">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        
+
         <!-- 移动端导航菜单 -->
         <div class="md:hidden hidden bg-dark-secondary shadow-soft absolute w-full" id="mobileMenu">
             <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
-                <a href="#" class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link" data-target="home">主页</a>
-                <a href="#" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link" data-target="intro-section">痛车组&枝江娱乐</a>
-                <a href="paincar.html" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link" data-target="paincar">痛车展示</a>
-                <a href="works.html" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 mobile-nav-link" data-target="works">专辑作品&舞台</a>
+                <a href="#"
+                    class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
+                    data-target="home">主页</a>
+                <a href="#"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
+                    data-target="intro-section">痛车组&枝江娱乐</a>
+                <a href="paincar.html"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
+                    data-target="paincar">痛车展示</a>
+                <a href="works.html"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 mobile-nav-link"
+                    data-target="works">专辑作品&舞台</a>
             </div>
         </div>
     </header>
@@ -231,50 +258,47 @@
     <!-- 标签切换介绍区域 + 成员介绍（移除"关于我们"标题） -->
     <section id="intro-section" class="full-screen-section bg-dark-primary bg-texture">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <!-- 标签切换介绍区域（移除"关于我们"标题） -->
+            <!-- 标签切换介绍区域（宽度改为80%，移除横线） -->
             <div class="mb-20">
                 <!-- 标签切换容器 -->
                 <div class="tab-switcher">
                     <!-- 放大后的切换标签 -->
                     <div class="tabs" id="introTabs">
-                        <div class="tab" data-tab="zhijiang">枝江娱乐</div>
                         <div class="tab active" data-tab="zhitong">枝痛组</div>
-                    </div>                    
+                        <div class="tab" data-tab="zhijiang">枝江娱乐</div>
+                    </div>
                     
-                    <!-- 标签内容：枝江娱乐 -->
-                    <div class="tab-content" id="zhijiangContent">
-                        <div class="max-w-4xl mx-auto bg-dark-secondary/50 rounded-2xl p-8 sm:p-12 shadow-soft">
-                            <h3 class="text-xl sm:text-2xl font-medium mb-8 text-center text-dark-gray-100 font-jp">About 枝江娱乐</h3>
-                            <!-- <div class="w-20 h-[2px] bg-dark-accent mx-auto mb-12"></div> -->
-                            <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg">
-                                <p class="text-left">
-                                    枝江娱乐是国内顶尖的虚拟偶像运营品牌，旗下拥有A-SOUL等多个标杆性虚拟偶像团体，致力于通过高品质的内容创作和创新的互动形式，打造有温度、有影响力的虚拟偶像IP。
+                    <!-- 标签内容：枝痛组（宽度80%，恢复h3样式） -->
+                    <div class="tab-content active" id="zhitongContent">
+                        <div class="max-w-[80%] mx-auto bg-dark-secondary/50 rounded-2xl p-12 shadow-soft">
+                            <h3 class="text-xl sm:text-2xl font-medium mb-6 text-center text-dark-gray-100 font-jp">关于枝痛组</h3>
+                            <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg font-jp">
+                                <p class="text-center">
+                                    枝痛组是由一群热爱枝江虚拟偶像文化与痛车文化的粉丝自发组建的兴趣团体，核心围绕A-SOUL现役成员（贝拉、嘉然、乃琳）及枝江二期「闪耀舞台」成员（思诺Gladys、心宜Fiona）打造专属主题痛车。
                                 </p>
-                                <p class="text-left">
-                                    A-SOUL作为枝江娱乐的核心团体，自2020年出道以来，凭借专业的舞台表现、真实的人格塑造和深度的粉丝互动，成为虚拟偶像行业的标杆。
+                                <p class="text-center">
+                                    我们坚持"还原角色特质、兼顾视觉美感、传递正向文化"的设计理念，每一台痛车都经过精心打磨，既保留枝江成员的核心人设特征，又融合汽车美学与涂装工艺。
                                 </p>
-                                <p class="text-left">
-                                    2023年推出的「闪耀舞台」二期计划，延续了枝江娱乐的高品质制作理念，为虚拟偶像行业注入了新的活力。
+                                <p class="text-center">
+                                    枝痛组不仅专注于痛车的设计与制作，还定期组织线下展示、车友交流等活动，搭建起虚拟偶像文化与汽车文化的沟通桥梁。
                                 </p>
                             </div>
                         </div>
                     </div>
-
                     
-                    <!-- 标签内容：枝痛组 -->
-                    <div class="tab-content active" id="zhitongContent">
-                        <div class="max-w-4xl mx-auto bg-dark-secondary/50 rounded-2xl p-8 sm:p-12 shadow-soft">
-                            <h3 class="text-xl sm:text-2xl font-medium mb-8 text-center text-dark-gray-100 font-jp">About 枝痛组</h3>
-                            <!-- <div class="w-20 h-[2px] bg-dark-accent mx-auto mb-12"></div> -->
-                            <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg">
-                                <p class="text-left">
-                                    枝痛组是由一群热爱枝江虚拟偶像文化与痛车文化的粉丝自发组建的兴趣团体，成立于2022年，核心围绕A-SOUL现役成员（贝拉、嘉然、乃琳）及枝江二期「闪耀舞台」成员（思诺Gladys、心宜Fiona）打造专属主题痛车。
+                    <!-- 标签内容：枝江娱乐（宽度80%，恢复h3样式） -->
+                    <div class="tab-content" id="zhijiangContent">
+                        <div class="max-w-[80%] mx-auto bg-dark-secondary/50 rounded-2xl p-12 shadow-soft">
+                            <h3 class="text-xl sm:text-2xl font-medium mb-6 text-center text-dark-gray-100 font-jp">关于枝江娱乐</h3>
+                            <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg font-jp">
+                                <p class="text-center">
+                                    枝江娱乐是国内顶尖的虚拟偶像运营品牌，旗下拥有A-SOUL等多个标杆性虚拟偶像团体，致力于通过高品质的内容创作和创新的互动形式，打造有温度、有影响力的虚拟偶像IP。
                                 </p>
-                                <p class="text-left">
-                                    我们坚持"还原角色特质、兼顾视觉美感、传递正向文化"的设计理念，每一台痛车都经过精心打磨，既保留枝江成员的核心人设特征，又融合汽车美学与涂装工艺。
+                                <p class="text-center">
+                                    A-SOUL作为枝江娱乐的核心团体，自2020年出道以来，凭借专业的舞台表现、真实的人格塑造和深度的粉丝互动，成为虚拟偶像行业的标杆。
                                 </p>
-                                <p class="text-left">
-                                    枝痛组不仅专注于痛车的设计与制作，还定期组织线下展示、车友交流等活动，搭建起虚拟偶像文化与汽车文化的沟通桥梁。
+                                <p class="text-center">
+                                    2023年推出的「闪耀舞台」二期计划，延续了枝江娱乐的高品质制作理念，为虚拟偶像行业注入了新的活力。
                                 </p>
                             </div>
                         </div>
@@ -285,14 +309,13 @@
             <!-- 成员介绍板块（完全保留原有设计） -->
             <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-light mb-12 text-center text-dark-gray-100 tracking-wide">枝江娱乐成员</h2>
             
-            <!-- 左右分栏：A-SOUL + 闪耀舞台 -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- A-SOUL 板块 -->
-                <div>
-                    <h3 class="text-xl sm:text-2xl font-medium mb-8 text-center text-dark-gray-100 pb-4 border-b border-dark-gray-700">A-SOUL 成员</h3>
-                    <p class="text-center text-dark-gray-400 mb-10">国内虚拟偶像领域标杆性团体，高质量舞台与强互动性粉丝运营的代表</p>
-                    
-                    <!-- A-SOUL成员横向排列 -->
+            <!-- 成员卡片布局：保留标题分隔，A-SOUL占3份，闪耀舞台占2份 -->
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                <!-- A-SOUL 成员 - 占3列，保留标题分隔 -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-3xl font-medium mb-6 text-center text-dark-gray-200">A-SOUL 成员</h4>
+                    <!-- <p class="text-sm text-dark-gray-400 mb-8 text-center">枝江娱乐核心团体，出道即巅峰的虚拟偶像标杆</p> -->
+                     <div class="w-80 h-[2px] bg-white mx-auto mb-4"></div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <!-- 贝拉 -->
                         <div class="member-card-bg bg-member-beila/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/11/800/1200');">
@@ -306,22 +329,22 @@
                                 <h4 class="text-center text-lg font-medium mb-2 text-member-beila">@贝拉kira</h4>
                                 
                                 <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">实力超强的舞蹈王者，暖心队长</p>
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">元气满满的A-SOUL舞担参上~目标TOP IDOL，一起加油！</p>
                                 
                                 <!-- 基础信息 -->
                                 <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
                                     <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>7月17日</p>
                                     <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>贝极星</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>深海蓝</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>#DB7D74</p>
                                 </div>
                                 
                                 <!-- 分割线 -->
-                                <div class="w-8 h-[1px] bg-member-beila/50 mx-auto mb-4"></div>
+                                <div class="w-12 h-[3px] bg-member-beila/50 mx-auto mb-4"></div>
                                 
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>A-SOUL_贝拉，喜欢跳舞的小贝拉~</p>
-                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>外冷内热的暖心队长，性格直爽有担当，舞蹈实力拉满</p>
+                                    <p><span class="font-medium text-dark-gray-300">舞台王者：</span>元气满满的A-SOUL舞担参上~目标TOP IDOL，一起加油！</p>
+                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>外锅内锤的牛牛队长，性格直爽有担当，舞蹈实力拉满</p>
                                 </div>
                                 
                                 <!-- 雷达图 -->
@@ -343,21 +366,21 @@
                                 <h4 class="text-center text-lg font-medium mb-2 text-member-jiarran">@嘉然今天吃什么</h4>
                                 
                                 <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">软萌可爱的小草莓，团队元气小太阳</p>
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">这里是嘉然！别看我小小的，我超能吃还超可爱的哦~</p>
                                 
                                 <!-- 基础信息 -->
                                 <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
                                     <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>3月7日</p>
                                     <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>嘉心糖</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>草莓红</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>#E799B0</p>
                                 </div>
                                 
                                 <!-- 分割线 -->
-                                <div class="w-8 h-[1px] bg-member-jiarran/50 mx-auto mb-4"></div>
+                                <div class="w-12 h-[3px] bg-member-jiarran/50 mx-auto mb-4"></div>
                                 
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>A-SOUL_嘉然，今天也要好好吃饭！</p>
+                                    <p><span class="font-medium text-dark-gray-300">枝江高人：</span>~</p>
                                     <p><span class="font-medium text-dark-gray-300">人设特点：</span>治愈系笑容，温柔又有韧性，干饭第一名</p>
                                 </div>
                                 
@@ -380,21 +403,21 @@
                                 <h4 class="text-center text-lg font-medium mb-2 text-member-nailin">@乃琳Queen</h4>
                                 
                                 <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">优雅知性的大姐姐，团队氛围调节者</p>
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">喜欢听你说，开心和不开心的，都告诉我吧~</p>
                                 
                                 <!-- 基础信息 -->
                                 <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
                                     <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>8月8日</p>
                                     <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>奶淇琳</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>暖橙色</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>#576690</p>
                                 </div>
                                 
                                 <!-- 分割线 -->
-                                <div class="w-8 h-[1px] bg-member-nailin/50 mx-auto mb-4"></div>
+                                <div class="w-12 h-[3px] bg-member-nailin/50 mx-auto mb-4"></div>
                                 
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>A-SOUL_乃琳，优雅永不过时~</p>
+                                    <p><span class="font-medium text-dark-gray-300">优雅知性的雕：</span>喜欢听你说，开心和不开心的，都告诉我吧~</p>
                                     <p><span class="font-medium text-dark-gray-300">人设特点：</span>情商高口才好，温柔中带着小调皮，主持担当</p>
                                 </div>
                                 
@@ -407,12 +430,11 @@
                     </div>
                 </div>
                 
-                <!-- 闪耀舞台 板块 -->
-                <div>
-                    <h3 class="text-xl sm:text-2xl font-medium mb-8 text-center text-dark-gray-100 pb-4 border-b border-dark-gray-700">枝江二期「闪耀舞台」</h3>
-                    <p class="text-center text-dark-gray-400 mb-10">延续枝江文化，带来全新风格的新生代虚拟偶像</p>
-                    
-                    <!-- 闪耀舞台成员横向排列 -->
+                <!-- 闪耀舞台 成员 - 占2列，保留标题分隔 -->
+                <div class="lg:col-span-2">
+                    <h4 class="text-3xl font-medium mb-6 text-center text-dark-gray-200">闪耀舞台成员</h4>
+                    <!-- <p class="text-sm text-dark-gray-400 mb-8 text-center">枝江娱乐全新企划，活力满满的新生代虚拟偶像</p> -->
+                     <div class="w-80 h-[2px] bg-white mx-auto mb-4"></div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- 思诺Gladys -->
                         <div class="member-card-bg bg-member-sinuo/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/15/800/1200');">
@@ -436,7 +458,7 @@
                                 </div>
                                 
                                 <!-- 分割线 -->
-                                <div class="w-8 h-[1px] bg-member-sinuo/50 mx-auto mb-4"></div>
+                                <div class="w-12 h-[3px] bg-member-sinuo/50 mx-auto mb-4"></div>
                                 
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
@@ -473,7 +495,7 @@
                                 </div>
                                 
                                 <!-- 分割线 -->
-                                <div class="w-8 h-[1px] bg-member-xinyi/50 mx-auto mb-4"></div>
+                                <div class="w-12 h-[3px] bg-member-xinyi/50 mx-auto mb-4"></div>
                                 
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
@@ -492,7 +514,6 @@
             </div>
         </div>
     </section>
-
     <!-- 底部版权信息 -->
     <footer class="bg-dark-secondary py-8 border-t border-dark-gray-800">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -502,10 +523,14 @@
                     <p class="text-dark-gray-500 text-sm">以热爱为名 · 为枝江而行</p>
                 </div>
                 <div class="flex space-x-6 text-lg">
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-bilibili"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-weibo"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-wechat"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-solid fa-car"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-bilibili"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-weibo"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-wechat"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-solid fa-car"></i></a>
                 </div>
             </div>
             <div class="border-t border-dark-gray-800 mt-8 pt-8 text-center text-dark-gray-600 text-sm">
@@ -516,22 +541,39 @@
 
     <!-- JavaScript -->
     <script>
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
+        // Logo onerror容错处理（修复文本打印问题）
+        document.addEventListener('DOMContentLoaded', function () {
+            // 枝江娱乐Logo容错
+            const zjLogo = document.getElementById('zjLogo');
+            const zjLogoFallback = document.getElementById('zjLogoFallback');
+            zjLogo.onerror = function () {
+                zjLogo.style.display = 'none';
+                zjLogoFallback.style.display = 'inline-block';
+            };
+
+            // A-SOUL Logo容错
+            const asoulLogo = document.getElementById('asoulLogo');
+            const asoulLogoFallback = document.getElementById('asoulLogoFallback');
+            asoulLogo.onerror = function () {
+                asoulLogo.style.display = 'none';
+                asoulLogoFallback.style.display = 'inline-block';
+            };
+        });
+
+        // 导航栏滚动效果 - 修复宽度变化问题：仅保留阴影，移除padding变化
+        window.addEventListener('scroll', function () {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('py-3', 'shadow-soft');
-                navbar.classList.remove('py-4');
+                navbar.classList.add('shadow-soft'); // 仅添加阴影，不修改padding
             } else {
-                navbar.classList.add('py-4');
-                navbar.classList.remove('py-3', 'shadow-soft');
+                navbar.classList.remove('shadow-soft'); // 仅移除阴影
             }
         });
 
         // 移动端菜单切换
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', function() {
+        menuBtn.addEventListener('click', function () {
             mobileMenu.classList.toggle('hidden');
             const icon = menuBtn.querySelector('i');
             if (icon.classList.contains('fa-bars')) {
@@ -545,17 +587,17 @@
 
         // 导航点击逻辑
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 const target = this.getAttribute('data-target');
-                
+
                 // 如果是外部链接（痛车展示/作品舞台），不阻止默认行为
                 if (target === 'paincar' || target === 'works') {
                     return;
                 }
-                
+
                 // 阻止默认跳转
                 e.preventDefault();
-                
+
                 // 主页回到顶部
                 if (target === 'home') {
                     window.scrollTo({
@@ -572,7 +614,7 @@
                         });
                     }
                 }
-                
+
                 // 关闭移动端菜单
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
@@ -586,29 +628,29 @@
         // 标签切换逻辑（优化动画）
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
-        
+
         tabs.forEach(tab => {
             // 悬浮切换
-            tab.addEventListener('mouseenter', function() {
+            tab.addEventListener('mouseenter', function () {
                 // 移除所有标签的激活样式
                 tabs.forEach(t => t.classList.remove('active'));
                 // 激活当前标签
                 this.classList.add('active');
-                
+
                 // 隐藏所有内容
                 tabContents.forEach(content => content.classList.remove('active'));
                 // 显示对应内容
                 const targetTab = this.getAttribute('data-tab');
                 document.getElementById(`${targetTab}Content`).classList.add('active');
             });
-            
+
             // 点击也可切换（增强可用性）
-            tab.addEventListener('click', function() {
+            tab.addEventListener('click', function () {
                 // 移除所有标签的激活样式
                 tabs.forEach(t => t.classList.remove('active'));
                 // 激活当前标签
                 this.classList.add('active');
-                
+
                 // 隐藏所有内容
                 tabContents.forEach(content => content.classList.remove('active'));
                 // 显示对应内容
@@ -659,13 +701,13 @@
         new Chart(document.getElementById('beilaChart'), {
             type: 'radar',
             data: {
-                labels: ['歌力', '舞力', '游戏力', '杂谈力', '特殊能力'],
+                labels: ['歌力', '舞力', '游戏力', '杂谈力','养花存活率', '智力'],
                 datasets: [{
                     label: '贝拉',
-                    data: [75, 95, 65, 70, 10],
-                    backgroundColor: 'rgba(129, 212, 250, 0.1)',
-                    borderColor: 'rgba(129, 212, 250, 0.8)',
-                    pointBackgroundColor: 'rgba(129, 212, 250, 1)',
+                    data: [85, 90, 70, 75, 100, 10],
+                    backgroundColor: 'rgba(219, 125,116, 0.3)',
+                    borderColor: '#DB7D74',
+                    pointBackgroundColor: '#DB7D74',
                 }]
             },
             options: radarOptions
@@ -675,13 +717,13 @@
         new Chart(document.getElementById('jiarranChart'), {
             type: 'radar',
             data: {
-                labels: ['歌力', '舞力', '游戏力', '杂谈力', '特殊能力'],
+                labels: ['歌力', '舞力', '游戏力', '杂谈力', '长高空间'],
                 datasets: [{
                     label: '嘉然',
-                    data: [80, 75, 60, 85, 95],
-                    backgroundColor: 'rgba(255, 138, 154, 0.1)',
-                    borderColor: 'rgba(255, 138, 154, 0.8)',
-                    pointBackgroundColor: 'rgba(255, 138, 154, 1)',
+                    data: [80, 80, 85, 85, 100],
+                    backgroundColor: 'rgba(231, 153, 176, 0.3)',
+                    borderColor: '#E799B0',
+                    pointBackgroundColor: '#E799B0',
                 }]
             },
             options: radarOptions
@@ -691,13 +733,13 @@
         new Chart(document.getElementById('nailinChart'), {
             type: 'radar',
             data: {
-                labels: ['歌力', '舞力', '游戏力', '杂谈力', '特殊能力'],
+                labels: ['歌力', '舞力', '游戏力', '杂谈力', '烹饪'],
                 datasets: [{
                     label: '乃琳',
-                    data: [80, 70, 75, 95, 10],
-                    backgroundColor: 'rgba(255, 183, 77, 0.1)',
-                    borderColor: 'rgba(255, 183, 77, 0.8)',
-                    pointBackgroundColor: 'rgba(255, 183, 77, 1)',
+                    data: [80, 70, 75, 95, 100],
+                    backgroundColor: 'rgba(87, 102, 144, 0.3)',
+                    borderColor: '#576690',
+                    pointBackgroundColor: '#576690',
                 }]
             },
             options: radarOptions
@@ -736,4 +778,5 @@
         });
     </script>
 </body>
+
 </html>
