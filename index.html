@@ -35,10 +35,10 @@
                         },
                         member: {
                             beila: '#DB7D74',
-                            jiarran: '#E799B0',
+                            jiaran: '#E799B0',
                             nailin: '#576690',
-                            sinuo: '#a5d6a7',
-                            xinyi: '#ba68c8'
+                            sinuo: '#7252C0',
+                            xinyi: '#C93773'
                         }
                     },
                     fontFamily: {
@@ -375,7 +375,7 @@
                         </div>
 
                         <!-- 嘉然 -->
-                        <div class="member-card-bg bg-member-jiarran/10 rounded-2xl overflow-hidden card-hover"
+                        <div class="member-card-bg bg-member-jiaran/10 rounded-2xl overflow-hidden card-hover"
                             style="background-image: url('https://picsum.photos/id/13/800/1200');">
                             <div class="member-card-content p-6 h-full flex flex-col">
                                 <!-- 头像 -->
@@ -385,7 +385,7 @@
                                 </div>
 
                                 <!-- B站ID -->
-                                <h4 class="text-center text-lg font-medium mb-2 text-member-jiarran">@嘉然今天吃什么</h4>
+                                <h4 class="text-center text-lg font-medium mb-2 text-member-jiaran">@嘉然今天吃什么</h4>
 
                                 <!-- 一句话简介 -->
                                 <p class="text-center text-dark-gray-300 text-sm mb-4">这里是嘉然！别看我小小的，我超能吃还超可爱的哦~</p>
@@ -401,7 +401,7 @@
                                 </div>
 
                                 <!-- 分割线 -->
-                                <div class="w-12 h-[3px] bg-member-jiarran/50 mx-auto mb-4"></div>
+                                <div class="w-12 h-[3px] bg-member-jiaran/50 mx-auto mb-4"></div>
 
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
@@ -411,7 +411,7 @@
 
                                 <!-- 雷达图 -->
                                 <div class="radar-container mt-auto">
-                                    <canvas id="jiarranChart"></canvas>
+                                    <canvas id="jiaranChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -481,7 +481,7 @@
                                 <h4 class="text-center text-lg font-medium mb-2 text-member-sinuo">@思诺Gladys</h4>
 
                                 <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">元气满满的活力少女，气氛活跃器</p>
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">元气满满的活力少女，气氛活跃器，枝江邓紫棋</p>
 
                                 <!-- 基础信息 -->
                                 <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
@@ -489,7 +489,7 @@
                                     </p>
                                     <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>诺米
                                     </p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>青柠绿
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>#7252C0
                                     </p>
                                 </div>
 
@@ -531,7 +531,7 @@
                                     </p>
                                     <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>宜家人
                                     </p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>紫藤紫
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>#C93773
                                     </p>
                                 </div>
 
@@ -575,7 +575,7 @@
                 </div>
             </div>
             <div class="border-t border-dark-gray-800 mt-8 pt-8 text-center text-dark-gray-600 text-sm">
-                <p>© 2025 枝痛组 官方网站 | 本网站仅作粉丝文化展示使用</p>
+                <p>© 2026 枝痛组 官方网站 | 本网站仅作粉丝文化展示使用</p>
             </div>
         </div>
     </footer>
@@ -755,7 +755,7 @@
         });
 
         // 嘉然雷达图
-        new Chart(document.getElementById('jiarranChart'), {
+        new Chart(document.getElementById('jiaranChart'), {
             type: 'radar',
             data: {
                 labels: ['歌力', '舞力', '游戏力', '杂谈力', '长高空间'],
@@ -794,9 +794,9 @@
                 datasets: [{
                     label: '思诺',
                     data: [75, 80, 85, 90, 20],
-                    backgroundColor: 'rgba(165, 214, 167, 0.1)',
-                    borderColor: 'rgba(165, 214, 167, 0.8)',
-                    pointBackgroundColor: 'rgba(165, 214, 167, 1)',
+                    backgroundColor: 'rgba(114, 82, 192, 0.3)',
+                    borderColor: '#7252C0',
+                    pointBackgroundColor: '#7252C0',
                 }]
             },
             options: radarOptions
@@ -810,9 +810,9 @@
                 datasets: [{
                     label: '心宜',
                     data: [90, 70, 65, 75, 90],
-                    backgroundColor: 'rgba(186, 104, 200, 0.1)',
-                    borderColor: 'rgba(186, 104, 200, 0.8)',
-                    pointBackgroundColor: 'rgba(186, 104, 200, 1)',
+                    backgroundColor: 'rgba(201, 55, 115, 0.3)',
+                    borderColor: '#C93773',
+                    pointBackgroundColor: '#C93773',
                 }]
             },
             options: radarOptions
