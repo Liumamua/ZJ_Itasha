@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>枝痛组 - 痛车展示</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -39,7 +41,7 @@
                         }
                     },
                     fontFamily: {
-                        jp: ['"Noto Sans JP"', 'sans-serif'],
+                        jp: ['"Noto Sans SC"', 'sans-serif'],
                     },
                     boxShadow: {
                         'soft': '0 4px 20px rgba(0, 0, 0, 0.2)',
@@ -72,8 +74,9 @@
         }
     </style>
 </head>
+
 <body class="bg-dark-primary font-jp text-dark-gray-200 antialiased">
-     <!-- 顶栏导航 - 修复宽度变化问题 + 替换Logo（修复onerror） -->
+    <!-- 顶栏导航 - 修复宽度变化问题 + 替换Logo（修复onerror） -->
     <header class="fixed w-full top-0 z-50 bg-dark-secondary/95 backdrop-blur-sm transition-all duration-500"
         id="navbar">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
@@ -145,24 +148,33 @@
     <!-- 痛车展示 - 修复滚动遮挡问题 -->
     <section id="paincar" class="section-padding bg-dark-primary bg-texture pt-4">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-[clamp(1.5rem,4vw,2.2rem)] font-light mb-8 text-center text-dark-gray-100 tracking-wide">痛车展示</h2>
+            <h2 class="text-[clamp(1.5rem,4vw,2.2rem)] font-light mb-8 text-center text-dark-gray-100 tracking-wide">
+                痛车展示</h2>
             <div class="w-16 h-[1px] bg-dark-accent mx-auto mb-16"></div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                 <!-- 嘉然主题痛车 -->
                 <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                     <div class="relative">
-                        <img src="https://picsum.photos/id/1048/800/500" alt="嘉然主题痛车" class="w-full h-56 sm:h-64 object-cover">
-                        <div class="absolute top-4 left-4 bg-member-jiarran/20 text-member-jiarran px-3 py-1 rounded-full text-xs font-medium">
+                        <img src="https://picsum.photos/id/1048/800/500" alt="嘉然主题痛车"
+                            class="w-full h-56 sm:h-64 object-cover">
+                        <div
+                            class="absolute top-4 left-4 bg-member-jiarran/20 text-member-jiarran px-3 py-1 rounded-full text-xs font-medium">
                             嘉然主题款
                         </div>
                     </div>
                     <div class="p-6 sm:p-8">
                         <h3 class="text-lg sm:text-xl font-medium mb-4 text-dark-gray-100">嘉然·草莓星球</h3>
                         <div class="space-y-3 text-dark-gray-400 text-sm sm:text-base">
-                            <p><span class="font-medium text-dark-gray-300">设计核心：</span>以嘉然的草莓元素和治愈系风格为核心，主色调采用标志性的草莓红与奶油白</p>
-                            <p><span class="font-medium text-dark-gray-300">视觉亮点：</span>车身侧面还原嘉然经典舞台造型，车顶融入草莓图腾与"小草莓"粉丝标识</p>
-                            <p><span class="font-medium text-dark-gray-300">设计思路：</span>突出嘉然软萌可爱的人设特质，色彩搭配温暖明快，兼顾日常出行的视觉舒适度</p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">设计核心：</span>以嘉然的草莓元素和治愈系风格为核心，主色调采用标志性的草莓红与奶油白
+                            </p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">视觉亮点：</span>车身侧面还原嘉然经典舞台造型，车顶融入草莓图腾与"小草莓"粉丝标识
+                            </p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">设计思路：</span>突出嘉然软萌可爱的人设特质，色彩搭配温暖明快，兼顾日常出行的视觉舒适度
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -170,17 +182,24 @@
                 <!-- 贝拉主题痛车 -->
                 <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                     <div class="relative">
-                        <img src="https://picsum.photos/id/1072/800/500" alt="贝拉主题痛车" class="w-full h-56 sm:h-64 object-cover">
-                        <div class="absolute top-4 left-4 bg-member-beila/20 text-member-beila px-3 py-1 rounded-full text-xs font-medium">
+                        <img src="https://picsum.photos/id/1072/800/500" alt="贝拉主题痛车"
+                            class="w-full h-56 sm:h-64 object-cover">
+                        <div
+                            class="absolute top-4 left-4 bg-member-beila/20 text-member-beila px-3 py-1 rounded-full text-xs font-medium">
                             贝拉主题款
                         </div>
                     </div>
                     <div class="p-6 sm:p-8">
                         <h3 class="text-lg sm:text-xl font-medium mb-4 text-dark-gray-100">贝拉·星芒舞步</h3>
                         <div class="space-y-3 text-dark-gray-400 text-sm sm:text-base">
-                            <p><span class="font-medium text-dark-gray-300">设计核心：</span>以贝拉的舞蹈元素和飒爽气质为核心，主色调采用应援色深海蓝与星芒银</p>
-                            <p><span class="font-medium text-dark-gray-300">视觉亮点：</span>车身线条融入舞蹈动作轨迹，车门处还原贝拉经典舞台pose，轮毂刻有星芒标识</p>
-                            <p><span class="font-medium text-dark-gray-300">设计思路：</span>体现贝拉"舞蹈王者"的核心特质，整体风格干练利落，兼具力量感与美感</p>
+                            <p><span class="font-medium text-dark-gray-300">设计核心：</span>以贝拉的舞蹈元素和飒爽气质为核心，主色调采用应援色深海蓝与星芒银
+                            </p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">视觉亮点：</span>车身线条融入舞蹈动作轨迹，车门处还原贝拉经典舞台pose，轮毂刻有星芒标识
+                            </p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">设计思路：</span>体现贝拉"舞蹈王者"的核心特质，整体风格干练利落，兼具力量感与美感
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -188,17 +207,24 @@
                 <!-- 乃琳主题痛车 -->
                 <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                     <div class="relative">
-                        <img src="https://picsum.photos/id/1073/800/500" alt="乃琳主题痛车" class="w-full h-56 sm:h-64 object-cover">
-                        <div class="absolute top-4 left-4 bg-member-nailin/20 text-member-nailin px-3 py-1 rounded-full text-xs font-medium">
+                        <img src="https://picsum.photos/id/1073/800/500" alt="乃琳主题痛车"
+                            class="w-full h-56 sm:h-64 object-cover">
+                        <div
+                            class="absolute top-4 left-4 bg-member-nailin/20 text-member-nailin px-3 py-1 rounded-full text-xs font-medium">
                             乃琳主题款
                         </div>
                     </div>
                     <div class="p-6 sm:p-8">
                         <h3 class="text-lg sm:text-xl font-medium mb-4 text-dark-gray-100">乃琳·优雅回响</h3>
                         <div class="space-y-3 text-dark-gray-400 text-sm sm:text-base">
-                            <p><span class="font-medium text-dark-gray-300">设计核心：</span>以乃琳的知性优雅人设为核心，主色调采用暖橙色与香槟金的渐变搭配</p>
-                            <p><span class="font-medium text-dark-gray-300">视觉亮点：</span>车身融入欧式花纹与麦克风元素，车尾印有乃琳经典台词，内饰搭配专属香氛</p>
-                            <p><span class="font-medium text-dark-gray-300">设计思路：</span>突出乃琳"优雅大姐姐"的人设，整体风格轻奢精致，细节处彰显主持担当的特质</p>
+                            <p><span class="font-medium text-dark-gray-300">设计核心：</span>以乃琳的知性优雅人设为核心，主色调采用暖橙色与香槟金的渐变搭配
+                            </p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">视觉亮点：</span>车身融入欧式花纹与麦克风元素，车尾印有乃琳经典台词，内饰搭配专属香氛
+                            </p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">设计思路：</span>突出乃琳"优雅大姐姐"的人设，整体风格轻奢精致，细节处彰显主持担当的特质
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -206,17 +232,25 @@
                 <!-- 枝江二期联名款 -->
                 <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                     <div class="relative">
-                        <img src="https://picsum.photos/id/1074/800/500" alt="枝江二期联名痛车" class="w-full h-56 sm:h-64 object-cover">
-                        <div class="absolute top-4 left-4 bg-dark-accent/20 text-dark-accent px-3 py-1 rounded-full text-xs font-medium">
+                        <img src="https://picsum.photos/id/1074/800/500" alt="枝江二期联名痛车"
+                            class="w-full h-56 sm:h-64 object-cover">
+                        <div
+                            class="absolute top-4 left-4 bg-dark-accent/20 text-dark-accent px-3 py-1 rounded-full text-xs font-medium">
                             枝江二期联名款
                         </div>
                     </div>
                     <div class="p-6 sm:p-8">
                         <h3 class="text-lg sm:text-xl font-medium mb-4 text-dark-gray-100">枝江二期·新生乐章</h3>
                         <div class="space-y-3 text-dark-gray-400 text-sm sm:text-base">
-                            <p><span class="font-medium text-dark-gray-300">设计核心：</span>融合思诺Gladys、心宜Fiona两位二期成员的核心特质，主色调采用青柠绿与紫藤紫撞色</p>
-                            <p><span class="font-medium text-dark-gray-300">视觉亮点：</span>车身左侧为思诺元气风格，右侧为心宜温柔风格，车顶融合两位成员的代表符号</p>
-                            <p><span class="font-medium text-dark-gray-300">设计思路：</span>体现枝江文化的传承与新生，撞色设计突出二期成员的差异化特质，充满青春活力</p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">设计核心：</span>融合思诺Gladys、心宜Fiona两位二期成员的核心特质，主色调采用青柠绿与紫藤紫撞色
+                            </p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">视觉亮点：</span>车身左侧为思诺元气风格，右侧为心宜温柔风格，车顶融合两位成员的代表符号
+                            </p>
+                            <p><span
+                                    class="font-medium text-dark-gray-300">设计思路：</span>体现枝江文化的传承与新生，撞色设计突出二期成员的差异化特质，充满青春活力
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -233,10 +267,14 @@
                     <p class="text-dark-gray-500 text-sm">以热爱为名 · 为枝江而行</p>
                 </div>
                 <div class="flex space-x-6 text-lg">
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-bilibili"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-weibo"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-wechat"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-solid fa-car"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-bilibili"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-weibo"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-wechat"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-solid fa-car"></i></a>
                 </div>
             </div>
             <div class="border-t border-dark-gray-800 mt-8 pt-8 text-center text-dark-gray-600 text-sm">
@@ -332,4 +370,5 @@
         });
     </script>
 </body>
+
 </html>

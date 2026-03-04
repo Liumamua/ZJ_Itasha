@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>枝痛组 - 专辑作品&经典舞台</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -39,7 +41,7 @@
                         }
                     },
                     fontFamily: {
-                        jp: ['"Noto Sans JP"', 'sans-serif'],
+                        jp: ['"Noto Sans SC"', 'sans-serif'],
                     },
                     boxShadow: {
                         'soft': '0 4px 20px rgba(0, 0, 0, 0.2)',
@@ -71,9 +73,11 @@
         }
     </style>
 </head>
+
 <body class="bg-dark-primary font-jp text-dark-gray-200 antialiased">
     <!-- 顶栏导航 -->
-    <header class="fixed w-full top-0 z-50 bg-dark-secondary/95 backdrop-blur-sm transition-all duration-500" id="navbar">
+    <header class="fixed w-full top-0 z-50 bg-dark-secondary/95 backdrop-blur-sm transition-all duration-500"
+        id="navbar">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <!-- Logo区域 -->
             <div class="flex items-center gap-4">
@@ -88,30 +92,40 @@
                     <span>枝痛组</span>
                 </a>
             </div>
-            
+
             <!-- 桌面端导航 -->
             <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">主页</a>
-                <a href="index.html#zhitong-intro" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">痛车组介绍</a>
-                <a href="index.html#zhijiang" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">枝江娱乐</a>
-                <a href="paincar.html" class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">痛车展示</a>
-                <a href="#" class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300">专辑作品&舞台</a>
+                <a href="index.html"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">主页</a>
+                <a href="index.html#zhitong-intro"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">痛车组介绍</a>
+                <a href="index.html#zhijiang"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">枝江娱乐</a>
+                <a href="paincar.html"
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">痛车展示</a>
+                <a href="#"
+                    class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300">专辑作品&舞台</a>
             </nav>
-            
+
             <!-- 移动端菜单按钮 -->
             <button class="md:hidden text-lg text-dark-gray-200" id="menuBtn">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        
+
         <!-- 移动端导航菜单 -->
         <div class="md:hidden hidden bg-dark-secondary shadow-soft absolute w-full" id="mobileMenu">
             <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
-                <a href="index.html" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">主页</a>
-                <a href="index.html#zhitong-intro" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">痛车组介绍</a>
-                <a href="index.html#zhijiang" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">枝江娱乐</a>
-                <a href="paincar.html" class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">痛车展示</a>
-                <a href="#" class="text-base font-light text-dark-accent transition-colors duration-300 py-2">专辑作品&舞台</a>
+                <a href="index.html"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">主页</a>
+                <a href="index.html#zhitong-intro"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">痛车组介绍</a>
+                <a href="index.html#zhijiang"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">枝江娱乐</a>
+                <a href="paincar.html"
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">痛车展示</a>
+                <a href="#"
+                    class="text-base font-light text-dark-accent transition-colors duration-300 py-2">专辑作品&舞台</a>
             </div>
         </div>
     </header>
@@ -119,9 +133,10 @@
     <!-- 专辑作品展示 -->
     <section id="works" class="section-padding bg-dark-primary bg-texture pt-4">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-[clamp(1.5rem,4vw,2.2rem)] font-light mb-8 text-center text-dark-gray-100 tracking-wide">专辑作品&经典舞台</h2>
+            <h2 class="text-[clamp(1.5rem,4vw,2.2rem)] font-light mb-8 text-center text-dark-gray-100 tracking-wide">
+                专辑作品&经典舞台</h2>
             <div class="w-16 h-[1px] bg-dark-accent mx-auto mb-16"></div>
-            
+
             <!-- 专辑列表 -->
             <div class="mb-20">
                 <h3 class="text-xl sm:text-2xl font-medium mb-10 text-center text-dark-gray-100">经典专辑</h3>
@@ -129,8 +144,10 @@
                     <!-- 专辑1 -->
                     <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                         <div class="relative">
-                            <img src="https://picsum.photos/id/1082/500/500" alt="Quiet专辑封面" class="w-full h-64 object-cover">
-                            <div class="absolute top-4 left-4 bg-dark-accent/20 text-dark-accent px-3 py-1 rounded-full text-xs font-medium">
+                            <img src="https://picsum.photos/id/1082/500/500" alt="Quiet专辑封面"
+                                class="w-full h-64 object-cover">
+                            <div
+                                class="absolute top-4 left-4 bg-dark-accent/20 text-dark-accent px-3 py-1 rounded-full text-xs font-medium">
                                 A-SOUL 首张EP
                             </div>
                         </div>
@@ -144,12 +161,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 专辑2 -->
                     <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                         <div class="relative">
-                            <img src="https://picsum.photos/id/1083/500/500" alt="共鸣专辑封面" class="w-full h-64 object-cover">
-                            <div class="absolute top-4 left-4 bg-dark-accent/20 text-dark-accent px-3 py-1 rounded-full text-xs font-medium">
+                            <img src="https://picsum.photos/id/1083/500/500" alt="共鸣专辑封面"
+                                class="w-full h-64 object-cover">
+                            <div
+                                class="absolute top-4 left-4 bg-dark-accent/20 text-dark-accent px-3 py-1 rounded-full text-xs font-medium">
                                 周年纪念专辑
                             </div>
                         </div>
@@ -163,12 +182,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 专辑3 -->
                     <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                         <div class="relative">
-                            <img src="https://picsum.photos/id/1084/500/500" alt="枝江二期专辑封面" class="w-full h-64 object-cover">
-                            <div class="absolute top-4 left-4 bg-dark-accent/20 text-dark-accent px-3 py-1 rounded-full text-xs font-medium">
+                            <img src="https://picsum.photos/id/1084/500/500" alt="枝江二期专辑封面"
+                                class="w-full h-64 object-cover">
+                            <div
+                                class="absolute top-4 left-4 bg-dark-accent/20 text-dark-accent px-3 py-1 rounded-full text-xs font-medium">
                                 枝江二期 首张EP
                             </div>
                         </div>
@@ -184,7 +205,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- 经典舞台 -->
             <div>
                 <h3 class="text-xl sm:text-2xl font-medium mb-10 text-center text-dark-gray-100">经典舞台</h3>
@@ -193,24 +214,27 @@
                     <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                         <div class="flex flex-col md:flex-row">
                             <div class="md:w-2/5">
-                                <img src="https://picsum.photos/id/1085/400/400" alt="超级敏感舞台" class="w-full h-48 md:h-full object-cover">
+                                <img src="https://picsum.photos/id/1085/400/400" alt="超级敏感舞台"
+                                    class="w-full h-48 md:h-full object-cover">
                             </div>
                             <div class="md:w-3/5 p-6">
                                 <h4 class="text-lg font-medium mb-3 text-dark-gray-100">《超级敏感》一周年舞台</h4>
                                 <div class="space-y-2 text-dark-gray-400 text-sm">
                                     <p><span class="font-medium text-dark-gray-300">演出时间：</span>2021.11.23</p>
-                                    <p><span class="font-medium text-dark-gray-300">舞台亮点：</span>全员服装升级，编舞重新编排，现场互动感拉满</p>
+                                    <p><span class="font-medium text-dark-gray-300">舞台亮点：</span>全员服装升级，编舞重新编排，现场互动感拉满
+                                    </p>
                                     <p><span class="font-medium text-dark-gray-300">经典瞬间：</span>嘉然的草莓裙摆旋转、贝拉的高难度舞蹈动作</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 舞台2 -->
                     <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                         <div class="flex flex-col md:flex-row">
                             <div class="md:w-2/5">
-                                <img src="https://picsum.photos/id/1086/400/400" alt="传说的世界舞台" class="w-full h-48 md:h-full object-cover">
+                                <img src="https://picsum.photos/id/1086/400/400" alt="传说的世界舞台"
+                                    class="w-full h-48 md:h-full object-cover">
                             </div>
                             <div class="md:w-3/5 p-6">
                                 <h4 class="text-lg font-medium mb-3 text-dark-gray-100">《传说的世界》二周年舞台</h4>
@@ -222,12 +246,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 舞台3 -->
                     <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                         <div class="flex flex-col md:flex-row">
                             <div class="md:w-2/5">
-                                <img src="https://picsum.photos/id/1087/400/400" alt="闪耀舞台" class="w-full h-48 md:h-full object-cover">
+                                <img src="https://picsum.photos/id/1087/400/400" alt="闪耀舞台"
+                                    class="w-full h-48 md:h-full object-cover">
                             </div>
                             <div class="md:w-3/5 p-6">
                                 <h4 class="text-lg font-medium mb-3 text-dark-gray-100">《闪耀》枝江二期出道舞台</h4>
@@ -239,12 +264,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 舞台4 -->
                     <div class="bg-dark-tertiary rounded-2xl shadow-soft overflow-hidden card-hover">
                         <div class="flex flex-col md:flex-row">
                             <div class="md:w-2/5">
-                                <img src="https://picsum.photos/id/1088/400/400" alt="个人solo舞台" class="w-full h-48 md:h-full object-cover">
+                                <img src="https://picsum.photos/id/1088/400/400" alt="个人solo舞台"
+                                    class="w-full h-48 md:h-full object-cover">
                             </div>
                             <div class="md:w-3/5 p-6">
                                 <h4 class="text-lg font-medium mb-3 text-dark-gray-100">成员个人SOLO舞台合集</h4>
@@ -270,10 +296,14 @@
                     <p class="text-dark-gray-500 text-sm">以热爱为名 · 为枝江而行</p>
                 </div>
                 <div class="flex space-x-6 text-lg">
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-bilibili"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-weibo"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-wechat"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i class="fa-solid fa-car"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-bilibili"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-weibo"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-wechat"></i></a>
+                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-solid fa-car"></i></a>
                 </div>
             </div>
             <div class="border-t border-dark-gray-800 mt-8 pt-8 text-center text-dark-gray-600 text-sm">
@@ -285,7 +315,7 @@
     <!-- JavaScript -->
     <script>
         // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('py-3', 'shadow-soft');
@@ -299,7 +329,7 @@
         // 移动端菜单切换
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', function() {
+        menuBtn.addEventListener('click', function () {
             mobileMenu.classList.toggle('hidden');
             const icon = menuBtn.querySelector('i');
             if (icon.classList.contains('fa-bars')) {
@@ -313,7 +343,7 @@
 
         // 当前页点击自身导航项无动作
         document.querySelectorAll('a[href="#"]').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 // 滚动到顶部
                 window.scrollTo({
@@ -331,4 +361,5 @@
         });
     </script>
 </body>
+
 </html>

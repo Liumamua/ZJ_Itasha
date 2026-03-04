@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" href="/ZJ_Itasha/ZJ.ico" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
         rel="stylesheet">
     <script>
         tailwind.config = {
@@ -42,7 +42,7 @@
                         }
                     },
                     fontFamily: {
-                        jp: ['"Noto Sans JP"', 'sans-serif'],
+                        jp: ['"Noto Sans SC"', 'sans-serif'],
                     },
                     boxShadow: {
                         'soft': '0 4px 20px rgba(0, 0, 0, 0.2)',
@@ -173,7 +173,8 @@
             <div class="flex items-center gap-4">
                 <!-- 枝江娱乐Logo（透明底 ZJ_Enter.png）- 修复onerror -->
                 <div class="h-10 flex items-center justify-center">
-                    <img src="/ZJ_Itasha/pictures/logos/ZJ_Enter.png" alt="枝江娱乐Logo" class="h-full object-contain" id="zjLogo">
+                    <img src="/ZJ_Itasha/pictures/logos/ZJ_Enter.png" alt="枝江娱乐Logo" class="h-full object-contain"
+                        id="zjLogo">
                     <!-- 备用占位元素（提前创建，默认隐藏） -->
                     <span class="hidden text-xs text-dark-gray-300 ml-2" id="zjLogoFallback">枝江</span>
                 </div>
@@ -235,22 +236,26 @@
     </header>
 
     <!-- 主页核心内容：成员合照 + Slogan -->
-    <section id="home" class="h-screen flex items-center justify-center bg-dark-primary bg-texture relative overflow-hidden">
+    <section id="home"
+        class="h-screen flex items-center justify-center bg-dark-primary bg-texture relative overflow-hidden">
         <!-- 成员合照背景 -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-dark-primary/70"></div>
             <img src="https://picsum.photos/id/1071/1920/1080" alt="枝江成员合照" class="w-full h-full object-cover">
         </div>
-        
+
         <!-- Slogan悬浮层 -->
         <div class="container mx-auto px-4 z-10 text-center">
             <h1 class="text-[clamp(2rem,7vw,4rem)] font-light text-white text-shadow mb-6 tracking-wider">
                 枝痛组
             </h1>
-            <p class="text-[clamp(0.9rem,2vw,1.2rem)] text-dark-gray-100 max-w-xl mx-auto mb-10 leading-relaxed text-shadow">
+            <p
+                class="text-[clamp(0.9rem,2vw,1.2rem)] text-dark-gray-100 max-w-xl mx-auto mb-10 leading-relaxed text-shadow">
                 以枝江成员为魂 · 以痛车文化为翼 · 连接虚拟与现实的热爱
             </p>
-            <a href="#" class="inline-block bg-dark-tertiary text-dark-gray-100 px-8 py-3 rounded-full text-sm font-medium shadow-soft hover:shadow-hover transition-all duration-300 border border-dark-gray-700 nav-link" data-target="intro-section">
+            <a href="#"
+                class="inline-block bg-dark-tertiary text-dark-gray-100 px-8 py-3 rounded-full text-sm font-medium shadow-soft hover:shadow-hover transition-all duration-300 border border-dark-gray-700 nav-link"
+                data-target="intro-section">
                 了解更多 <i class="fa-solid fa-arrow-down ml-2 text-xs"></i>
             </a>
         </div>
@@ -265,40 +270,42 @@
                 <div class="tab-switcher">
                     <!-- 放大后的切换标签 -->
                     <div class="tabs" id="introTabs">
-                        <div class="tab active" data-tab="zhitong">枝痛组</div>
-                        <div class="tab" data-tab="zhijiang">枝江娱乐</div>
+                        <div class="tab active" data-tab="zhijiang">枝江娱乐</div>
+                        <div class="tab" data-tab="zhitong">枝痛组</div>
                     </div>
-                    
+
                     <!-- 标签内容：枝痛组（宽度80%，恢复h3样式） -->
-                    <div class="tab-content active" id="zhitongContent">
+                    <div class="tab-content" id="zhitongContent">
                         <div class="max-w-[80%] mx-auto bg-dark-secondary/50 rounded-2xl p-12 shadow-soft">
-                            <h3 class="text-xl sm:text-2xl font-medium mb-6 text-center text-dark-gray-100 font-jp">关于枝痛组</h3>
+                            <!-- <h3 class="text-xl sm:text-2xl font-medium mb-6 text-center text-dark-gray-100 font-jp">
+                                关于——枝痛组</h3> -->
                             <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg font-jp">
-                                <p class="text-center">
+                                <p class="text-left">
                                     枝痛组是由一群热爱枝江虚拟偶像文化与痛车文化的粉丝自发组建的兴趣团体，核心围绕A-SOUL现役成员（贝拉、嘉然、乃琳）及枝江二期「闪耀舞台」成员（思诺Gladys、心宜Fiona）打造专属主题痛车。
                                 </p>
-                                <p class="text-center">
+                                <p class="text-left">
                                     我们坚持"还原角色特质、兼顾视觉美感、传递正向文化"的设计理念，每一台痛车都经过精心打磨，既保留枝江成员的核心人设特征，又融合汽车美学与涂装工艺。
                                 </p>
-                                <p class="text-center">
+                                <p class="text-left">
                                     枝痛组不仅专注于痛车的设计与制作，还定期组织线下展示、车友交流等活动，搭建起虚拟偶像文化与汽车文化的沟通桥梁。
                                 </p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 标签内容：枝江娱乐（宽度80%，恢复h3样式） -->
-                    <div class="tab-content" id="zhijiangContent">
+                    <div class="tab-content active" id="zhijiangContent">
                         <div class="max-w-[80%] mx-auto bg-dark-secondary/50 rounded-2xl p-12 shadow-soft">
-                            <h3 class="text-xl sm:text-2xl font-medium mb-6 text-center text-dark-gray-100 font-jp">关于枝江娱乐</h3>
+                            <!-- <h3 class="text-xl sm:text-2xl font-medium mb-6 text-center text-dark-gray-100 font-jp">
+                                关于——枝江娱乐</h3> -->
                             <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg font-jp">
-                                <p class="text-center">
+                                <p class="text-left">
                                     枝江娱乐是国内顶尖的虚拟偶像运营品牌，旗下拥有A-SOUL等多个标杆性虚拟偶像团体，致力于通过高品质的内容创作和创新的互动形式，打造有温度、有影响力的虚拟偶像IP。
                                 </p>
-                                <p class="text-center">
+                                <p class="text-left">
                                     A-SOUL作为枝江娱乐的核心团体，自2020年出道以来，凭借专业的舞台表现、真实的人格塑造和深度的粉丝互动，成为虚拟偶像行业的标杆。
                                 </p>
-                                <p class="text-center">
+                                <p class="text-left">
                                     2023年推出的「闪耀舞台」二期计划，延续了枝江娱乐的高品质制作理念，为虚拟偶像行业注入了新的活力。
                                 </p>
                             </div>
@@ -306,122 +313,142 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- 成员介绍板块（完全保留原有设计） -->
-            <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-light mb-12 text-center text-dark-gray-100 tracking-wide">枝江娱乐成员</h2>
-            
+            <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-light mb-12 text-center text-dark-gray-100 tracking-wide">
+                枝江娱乐成员</h2>
+
             <!-- 成员卡片布局：保留标题分隔，A-SOUL占3份，闪耀舞台占2份 -->
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
                 <!-- A-SOUL 成员 - 占3列，保留标题分隔 -->
                 <div class="lg:col-span-3">
                     <h4 class="text-3xl font-medium mb-6 text-center text-dark-gray-200">A-SOUL 成员</h4>
                     <!-- <p class="text-sm text-dark-gray-400 mb-8 text-center">枝江娱乐核心团体，出道即巅峰的虚拟偶像标杆</p> -->
-                     <div class="w-80 h-[2px] bg-white mx-auto mb-4"></div>
+                    <div class="w-80 h-[2px] bg-white mx-auto mb-4"></div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <!-- 贝拉 -->
-                        <div class="member-card-bg bg-member-beila/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/11/800/1200');">
+                        <div class="member-card-bg bg-member-beila/10 rounded-2xl overflow-hidden card-hover"
+                            style="background-image: url('https://picsum.photos/id/11/800/1200');">
                             <div class="member-card-content p-6 h-full flex flex-col">
                                 <!-- 头像 -->
                                 <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="https://picsum.photos/id/11/200/200" alt="贝拉头像" class="w-full h-full object-cover">
+                                    <img src="https://picsum.photos/id/11/200/200" alt="贝拉头像"
+                                        class="w-full h-full object-cover">
                                 </div>
-                                
+
                                 <!-- B站ID -->
                                 <h4 class="text-center text-lg font-medium mb-2 text-member-beila">@贝拉kira</h4>
-                                
+
                                 <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">元气满满的A-SOUL舞担参上~目标TOP IDOL，一起加油！</p>
-                                
+                                <p class="text-center text-dark-gray-300 text-sm mb-4">元气满满的A-SOUL舞担参上~目标TOP IDOL，一起加油！
+                                </p>
+
                                 <!-- 基础信息 -->
                                 <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>7月17日</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>贝极星</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>#DB7D74</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>7月17日
+                                    </p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>贝极星
+                                    </p>
+                                    <p class="text-center"><span
+                                            class="font-medium text-dark-gray-300">应援色：</span>#DB7D74</p>
                                 </div>
-                                
+
                                 <!-- 分割线 -->
                                 <div class="w-12 h-[3px] bg-member-beila/50 mx-auto mb-4"></div>
-                                
+
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">舞台王者：</span>元气满满的A-SOUL舞担参上~目标TOP IDOL，一起加油！</p>
-                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>外锅内锤的牛牛队长，性格直爽有担当，舞蹈实力拉满</p>
+                                    <p><span class="font-medium text-dark-gray-300">舞台王者：</span>元气满满的A-SOUL舞担参上~目标TOP
+                                        IDOL，一起加油！</p>
+                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>外锅内锤的牛牛队长，性格直爽有担当，舞蹈实力拉满
+                                    </p>
                                 </div>
-                                
+
                                 <!-- 雷达图 -->
                                 <div class="radar-container mt-auto">
                                     <canvas id="beilaChart"></canvas>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- 嘉然 -->
-                        <div class="member-card-bg bg-member-jiarran/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/13/800/1200');">
+                        <div class="member-card-bg bg-member-jiarran/10 rounded-2xl overflow-hidden card-hover"
+                            style="background-image: url('https://picsum.photos/id/13/800/1200');">
                             <div class="member-card-content p-6 h-full flex flex-col">
                                 <!-- 头像 -->
                                 <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="https://picsum.photos/id/13/200/200" alt="嘉然头像" class="w-full h-full object-cover">
+                                    <img src="https://picsum.photos/id/13/200/200" alt="嘉然头像"
+                                        class="w-full h-full object-cover">
                                 </div>
-                                
+
                                 <!-- B站ID -->
                                 <h4 class="text-center text-lg font-medium mb-2 text-member-jiarran">@嘉然今天吃什么</h4>
-                                
+
                                 <!-- 一句话简介 -->
                                 <p class="text-center text-dark-gray-300 text-sm mb-4">这里是嘉然！别看我小小的，我超能吃还超可爱的哦~</p>
-                                
+
                                 <!-- 基础信息 -->
                                 <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>3月7日</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>嘉心糖</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>#E799B0</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>3月7日
+                                    </p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>嘉心糖
+                                    </p>
+                                    <p class="text-center"><span
+                                            class="font-medium text-dark-gray-300">应援色：</span>#E799B0</p>
                                 </div>
-                                
+
                                 <!-- 分割线 -->
                                 <div class="w-12 h-[3px] bg-member-jiarran/50 mx-auto mb-4"></div>
-                                
+
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
                                     <p><span class="font-medium text-dark-gray-300">枝江高人：</span>~</p>
                                     <p><span class="font-medium text-dark-gray-300">人设特点：</span>治愈系笑容，温柔又有韧性，干饭第一名</p>
                                 </div>
-                                
+
                                 <!-- 雷达图 -->
                                 <div class="radar-container mt-auto">
                                     <canvas id="jiarranChart"></canvas>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- 乃琳 -->
-                        <div class="member-card-bg bg-member-nailin/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/14/800/1200');">
+                        <div class="member-card-bg bg-member-nailin/10 rounded-2xl overflow-hidden card-hover"
+                            style="background-image: url('https://picsum.photos/id/14/800/1200');">
                             <div class="member-card-content p-6 h-full flex flex-col">
                                 <!-- 头像 -->
                                 <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="https://picsum.photos/id/14/200/200" alt="乃琳头像" class="w-full h-full object-cover">
+                                    <img src="https://picsum.photos/id/14/200/200" alt="乃琳头像"
+                                        class="w-full h-full object-cover">
                                 </div>
-                                
+
                                 <!-- B站ID -->
                                 <h4 class="text-center text-lg font-medium mb-2 text-member-nailin">@乃琳Queen</h4>
-                                
+
                                 <!-- 一句话简介 -->
                                 <p class="text-center text-dark-gray-300 text-sm mb-4">喜欢听你说，开心和不开心的，都告诉我吧~</p>
-                                
+
                                 <!-- 基础信息 -->
                                 <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>8月8日</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>奶淇琳</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>#576690</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>8月8日
+                                    </p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>奶淇琳
+                                    </p>
+                                    <p class="text-center"><span
+                                            class="font-medium text-dark-gray-300">应援色：</span>#576690</p>
                                 </div>
-                                
+
                                 <!-- 分割线 -->
                                 <div class="w-12 h-[3px] bg-member-nailin/50 mx-auto mb-4"></div>
-                                
+
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">优雅知性的雕：</span>喜欢听你说，开心和不开心的，都告诉我吧~</p>
+                                    <p><span class="font-medium text-dark-gray-300">优雅知性的雕：</span>喜欢听你说，开心和不开心的，都告诉我吧~
+                                    </p>
                                     <p><span class="font-medium text-dark-gray-300">人设特点：</span>情商高口才好，温柔中带着小调皮，主持担当</p>
                                 </div>
-                                
+
                                 <!-- 雷达图 -->
                                 <div class="radar-container mt-auto">
                                     <canvas id="nailinChart"></canvas>
@@ -430,80 +457,90 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- 闪耀舞台 成员 - 占2列，保留标题分隔 -->
                 <div class="lg:col-span-2">
                     <h4 class="text-3xl font-medium mb-6 text-center text-dark-gray-200">闪耀舞台成员</h4>
                     <!-- <p class="text-sm text-dark-gray-400 mb-8 text-center">枝江娱乐全新企划，活力满满的新生代虚拟偶像</p> -->
-                     <div class="w-80 h-[2px] bg-white mx-auto mb-4"></div>
+                    <div class="w-80 h-[2px] bg-white mx-auto mb-4"></div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- 思诺Gladys -->
-                        <div class="member-card-bg bg-member-sinuo/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/15/800/1200');">
+                        <div class="member-card-bg bg-member-sinuo/10 rounded-2xl overflow-hidden card-hover"
+                            style="background-image: url('https://picsum.photos/id/15/800/1200');">
                             <div class="member-card-content p-6 h-full flex flex-col">
                                 <!-- 头像 -->
                                 <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="https://picsum.photos/id/15/200/200" alt="思诺头像" class="w-full h-full object-cover">
+                                    <img src="https://picsum.photos/id/15/200/200" alt="思诺头像"
+                                        class="w-full h-full object-cover">
                                 </div>
-                                
+
                                 <!-- B站ID -->
                                 <h4 class="text-center text-lg font-medium mb-2 text-member-sinuo">@思诺Gladys</h4>
-                                
+
                                 <!-- 一句话简介 -->
                                 <p class="text-center text-dark-gray-300 text-sm mb-4">元气满满的活力少女，气氛活跃器</p>
-                                
+
                                 <!-- 基础信息 -->
                                 <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>4月12日</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>诺米</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>青柠绿</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>4月12日
+                                    </p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>诺米
+                                    </p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>青柠绿
+                                    </p>
                                 </div>
-                                
+
                                 <!-- 分割线 -->
                                 <div class="w-12 h-[3px] bg-member-sinuo/50 mx-auto mb-4"></div>
-                                
+
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
                                     <p><span class="font-medium text-dark-gray-300">B站简介：</span>枝江二期-思诺，元气满满向前冲！</p>
                                     <p><span class="font-medium text-dark-gray-300">人设特点：</span>性格开朗直爽，天然呆，说唱和架子鼓超棒</p>
                                 </div>
-                                
+
                                 <!-- 雷达图 -->
                                 <div class="radar-container mt-auto">
                                     <canvas id="sinuoChart"></canvas>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- 心宜Fiona -->
-                        <div class="member-card-bg bg-member-xinyi/10 rounded-2xl overflow-hidden card-hover" style="background-image: url('https://picsum.photos/id/16/800/1200');">
+                        <div class="member-card-bg bg-member-xinyi/10 rounded-2xl overflow-hidden card-hover"
+                            style="background-image: url('https://picsum.photos/id/16/800/1200');">
                             <div class="member-card-content p-6 h-full flex flex-col">
                                 <!-- 头像 -->
                                 <div class="w-16 h-16 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="https://picsum.photos/id/16/200/200" alt="心宜头像" class="w-full h-full object-cover">
+                                    <img src="https://picsum.photos/id/16/200/200" alt="心宜头像"
+                                        class="w-full h-full object-cover">
                                 </div>
-                                
+
                                 <!-- B站ID -->
                                 <h4 class="text-center text-lg font-medium mb-2 text-member-xinyi">@心宜Fiona</h4>
-                                
+
                                 <!-- 一句话简介 -->
                                 <p class="text-center text-dark-gray-300 text-sm mb-4">温柔治愈系少女，细节控声乐担当</p>
-                                
+
                                 <!-- 基础信息 -->
                                 <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>9月21日</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>宜家人</p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>紫藤紫</p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>9月21日
+                                    </p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>宜家人
+                                    </p>
+                                    <p class="text-center"><span class="font-medium text-dark-gray-300">应援色：</span>紫藤紫
+                                    </p>
                                 </div>
-                                
+
                                 <!-- 分割线 -->
                                 <div class="w-12 h-[3px] bg-member-xinyi/50 mx-auto mb-4"></div>
-                                
+
                                 <!-- B站简介 & 人设特点 -->
                                 <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
                                     <p><span class="font-medium text-dark-gray-300">B站简介：</span>枝江二期-心宜，用歌声治愈你~</p>
                                     <p><span class="font-medium text-dark-gray-300">人设特点：</span>慢热型人格，美声超棒，记忆力超群的细节控</p>
                                 </div>
-                                
+
                                 <!-- 雷达图 -->
                                 <div class="radar-container mt-auto">
                                     <canvas id="xinyiChart"></canvas>
@@ -702,7 +739,7 @@
         new Chart(document.getElementById('beilaChart'), {
             type: 'radar',
             data: {
-                labels: ['歌力', '舞力', '游戏力', '杂谈力','养花存活率', '智力'],
+                labels: ['歌力', '舞力', '游戏力', '杂谈力', '养花存活率', '智力'],
                 datasets: [{
                     label: '贝拉',
                     data: [85, 90, 70, 75, 100, 10],
