@@ -65,7 +65,7 @@
                 padding-bottom: clamp(3rem, 8vw, 5rem);
             }
             .bg-texture {
-                background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23333333' fill-opacity='0.3' fill-rule='evenodd'/%3E%3C/svg%3E");
+                background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
             }
             /* 修复顶栏遮挡的全局样式 */
             body {
@@ -81,22 +81,26 @@
         id="navbar">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <!-- Logo区域：枝江娱乐 + A-SOUL + 枝痛组 - 移除圆形容器，修复onerror -->
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-5">
                 <!-- 枝江娱乐Logo（透明底 ZJ_Enter.png）- 修复onerror -->
                 <div class="h-10 flex items-center justify-center">
-                    <img src="/ZJ_Itasha/pictures/logos/ZJ_Enter.png" alt="枝江娱乐Logo" class="h-full object-contain"
-                        id="zjLogo">
+                    <img src="/ZJ_Itasha/pictures/logos/ZJ_Enter.png" alt="枝江娱乐Logo" class="h-full object-contain" id="zjLogo">
                     <!-- 备用占位元素（提前创建，默认隐藏） -->
                     <span class="hidden text-xs text-dark-gray-300 ml-2" id="zjLogoFallback">枝江</span>
                 </div>
 
+                <div class="w-[3px] h-10 bg-white mx-0 mb-auto"></div>
+
                 <!-- A-SOUL Logo（透明底 A-SOUL.png）- 修复onerror -->
                 <div class="h-6 flex items-center justify-center">
-                    <img src="/ZJ_Itasha/pictures/logos/A-SOUL.png" alt="A-SOUL Logo" class="h-full object-contain"
-                        id="asoulLogo">
+                    <img src="/ZJ_Itasha/pictures/logos/A-SOUL.png" alt="A-SOUL Logo" class="h-full object-contain" id="asoulLogo">
                     <!-- 备用占位元素（提前创建，默认隐藏） -->
                     <span class="hidden text-xs text-dark-gray-300 ml-2" id="asoulLogoFallback">A-SOUL</span>
                 </div>
+
+            </div>
+
+            <div class="flex items-center gap-5">
 
                 <!-- 枝痛组Logo+文字 -->
                 <a href="#" class="text-xl sm:text-2xl font-medium flex items-center gap-2" id="homeLink">
@@ -109,7 +113,7 @@
             <nav class="hidden md:flex space-x-8">
                 <a href="index.html"
                     class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
-                    data-target="home">主页</a>
+                    data-target="home">首页</a>
                 <a href="#"
                     class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 nav-link"
                     data-target="paincar">痛车展示</a>
@@ -118,7 +122,7 @@
                     data-target="paincar">线下活动</a>
                 <a href="works.html"
                     class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
-                    data-target="intro-section">关于</a>
+                    data-target="intro-section">关于枝痛</a>
             </nav>
 
             <!-- 移动端菜单按钮 -->
@@ -132,7 +136,7 @@
             <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
                 <a href="##index.html"
                     class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
-                    data-target="home">主页</a>
+                    data-target="home">首页</a>
                 <a href="#"
                     class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
                     data-target="paincar">痛车展示</a>
@@ -217,7 +221,7 @@
                             </p>
                             <p><span class="font-medium text-dark-gray-300">小巧思：</span>
                             </p>
-                            <p><span class="font-medium text-dark-gray-300">车主说：</span>
+                            <p><span class="font-medium text-dark-gray-300">车主说：没品，你什么时候见过汤姆主人是露脸的？</span>
                             </p>
                         </div>
                     </div>
@@ -305,7 +309,7 @@
                 （已换版的过往作品或存在绝版人物，请在家长陪同下谨慎观看）</h2>
             <div class="w-16 h-[3px] bg-dark-accent mx-auto mb-16"></div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                 <!-- 赛车琳 -->
                 <div class="bg-dark-tertiary rounded-3xl shadow-soft overflow-hidden card-hover">
                     <div class="relative">
@@ -513,7 +517,7 @@
                 </div>
             </div>
             <div class="border-t border-dark-gray-800 mt-8 pt-8 text-center text-dark-gray-600 text-sm">
-                <p>© 2026 枝痛组 官方网站 | 本网站仅作粉丝文化展示使用</p>
+                <p>© 2026 枝痛组Z.J. Itasha 版权所有 | 本网站仅用于粉丝交流使用</p>
             </div>
         </div>
     </footer>
