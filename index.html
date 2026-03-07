@@ -203,12 +203,23 @@
                 <a href="#"
                     class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 nav-link"
                     data-target="home">首页</a>
-                <!-- <a href="#"
-                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
-                    data-target="intro-section">痛车组&枝江娱乐</a> -->
-                <a href="paincar.html"
-                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
-                    data-target="paincar">痛车展示</a>
+                <!-- 痛车展示下拉菜单 -->
+                <div class="relative group">
+                    <a href="paincar_now.html"
+                        class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                        data-target="paincar">
+                        痛车展示
+                    </a>
+                    <!-- 下拉菜单 -->
+                    <div class="absolute top-full left-0 mt-2 w-48 bg-dark-secondary shadow-soft rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <a href="paincar_now.html" class="block px-4 py-3 text-sm sm:text-base text-dark-gray-200 hover:bg-dark-tertiary hover:text-dark-accent transition-colors duration-300 text-left">
+                            现役痛车
+                        </a>
+                        <a href="javascript:void(0)" class="block px-4 py-3 text-sm sm:text-base text-dark-gray-200 hover:bg-dark-tertiary hover:text-dark-accent transition-colors duration-300 text-left" onclick="if(confirm('已换版的过往作品或存在绝版人物，请在家长陪同下谨慎观看。')) { window.location.href = 'paincar_past.html'; }">
+                            英灵殿
+                        </a>
+                    </div>
+                </div>
                 <a href="paincar.html"
                     class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
                     data-target="paincar">线下活动</a>
@@ -229,9 +240,14 @@
                 <a href="#"
                     class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
                     data-target="home">首页</a>
-                <a href="paincar.html"
-                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
-                    data-target="paincar">痛车展示</a>
+                <div class="border-b border-dark-gray-800">
+                    <a href="paincar_now.html"
+                        class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 block mobile-nav-link"
+                        data-target="paincar">现役痛车</a>
+                    <a href="javascript:void(0)"
+                        class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 block mobile-nav-link"
+                        onclick="confirmEnterPast()">英灵殿</a>
+                </div>
                 <a href="paincar.html"
                     class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
                     data-target="paincar">线下活动</a>
@@ -247,8 +263,8 @@
         class="h-screen flex items-center justify-center bg-dark-primary bg-texture relative overflow-hidden">
         <!-- 成员合照背景 -->
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-dark-primary/70"></div>
-            <img src="https://picsum.photos/id/1071/1920/1080" alt="枝江成员合照" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-dark-primary/50"></div>
+            <img src="/ZJ_Itasha/pictures/illustration/第八期合照.jpg" alt="枝江成员合照" class="w-full h-full object-cover">
         </div>
 
         <!-- Slogan悬浮层 -->
@@ -589,6 +605,13 @@
 
     <!-- JavaScript -->
     <script>
+        // 确认进入英灵殿 - 全局函数
+        function confirmEnterPast() {
+            if (confirm('英灵殿内为已换版的过往作品或存在绝版人物，请在家长陪同下谨慎观看。')) {
+                window.location.href = 'paincar_past.html';
+            }
+        }
+
         // Logo onerror容错处理（修复文本打印问题）
         document.addEventListener('DOMContentLoaded', function () {
             // 枝江娱乐Logo容错
@@ -636,6 +659,11 @@
         // 导航点击逻辑
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function (e) {
+                // 如果链接有onclick属性，跳过处理
+                if (this.hasAttribute('onclick')) {
+                    return;
+                }
+                
                 const target = this.getAttribute('data-target');
 
                 // 如果是外部链接（痛车展示/作品舞台），不阻止默认行为
