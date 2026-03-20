@@ -114,9 +114,24 @@
                 <a href="index.html"
                     class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
                     data-target="home">首页</a>
-                <a href="#"
-                    class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 nav-link"
-                    data-target="paincar">痛车展示</a>
+                <!-- 痛车展示下拉菜单 -->
+                <div class="relative group">
+                    <a href="paincar_now.html"
+                        class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 flex items-center nav-link"
+                        data-target="paincar">
+                        痛车展示
+                        <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
+                    </a>
+                    <!-- 下拉菜单 -->
+                    <div class="absolute top-full left-0 mt-2 w-48 bg-dark-secondary shadow-soft rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <a href="paincar_now.html" class="block px-4 py-3 text-sm text-dark-gray-200 hover:bg-dark-tertiary hover:text-dark-accent transition-colors duration-300">
+                            现役痛车
+                        </a>
+                        <a href="javascript:void(0)" class="block px-4 py-3 text-sm text-dark-gray-200 hover:bg-dark-tertiary hover:text-dark-accent transition-colors duration-300" onclick="confirmEnterPast()">
+                            英灵殿
+                        </a>
+                    </div>
+                </div>
                 <a href="paincar.html"
                     class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
                     data-target="paincar">线下活动</a>
@@ -134,15 +149,20 @@
         <!-- 移动端导航菜单 -->
         <div class="md:hidden hidden bg-dark-secondary shadow-soft absolute w-full" id="mobileMenu">
             <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
-                <a href="##index.html"
+                <a href="index.html"
                     class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
                     data-target="home">首页</a>
-                <a href="#"
+                <div class="border-b border-dark-gray-800">
+                    <a href="paincar_now.html"
+                        class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 block mobile-nav-link"
+                        data-target="paincar">现役痛车</a>
+                    <a href="javascript:void(0)"
+                        class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 block mobile-nav-link"
+                        onclick="confirmEnterPast()">英灵殿</a>
+                </div>
+                <a href="paincar.html"
                     class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
-                    data-target="paincar">痛车展示</a>
-                <a href="#"
-                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
-                    data-target="paincar">痛车展示</a>
+                    data-target="paincar">线下活动</a>
                 <a href="works.html"
                     class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 mobile-nav-link"
                     data-target="intro-section">关于</a>
@@ -152,14 +172,14 @@
 
     <!-- 痛车展示 - 修复滚动遮挡问题 -->
     <section id="paincar" class="section-padding bg-dark-primary bg-texture pt-4">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-[clamp(1.5rem,4vw,2.2rem)] font-light mb-8 text-center text-dark-gray-100 tracking-wide">
-                现役痛车</h2>
+                在役痛车</h2>
             <div class="w-16 h-[3px] bg-dark-accent mx-auto mb-16"></div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                 <!-- 帝江然 -->
-                <div class="bg-dark-tertiary rounded-3xl shadow-soft overflow-hidden card-hover">
+                <div class="bg-dark-tertiary rounded-xl shadow-soft overflow-hidden card-hover">
                     <div class="relative">
                         <img src="https://picsum.photos/id/1048/800/500" alt="帝江然"
                             class="w-full h-56 sm:h-64 object-cover">
@@ -302,7 +322,7 @@
     </section>
 
     <section id="paincar" class="section-padding bg-dark-primary bg-texture pt-4">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-[clamp(1.5rem,4vw,2.2rem)] font-light mb-4 text-center text-dark-gray-100 tracking-wide">
                 英灵殿</h2>
             <h2 class="text-s font-light mb-6 text-center text-dark-gray-300 tracking-wide">
@@ -524,6 +544,13 @@
 
     <!-- JavaScript -->
     <script>
+        // 确认进入英灵殿
+        function confirmEnterPast() {
+            if (confirm('已换版的过往作品或存在绝版人物，请在家长陪同下谨慎观看。')) {
+                window.location.href = 'paincar_past.html';
+            }
+        }
+
         // Logo onerror容错处理（修复文本打印问题）
         document.addEventListener('DOMContentLoaded', function () {
             // 枝江娱乐Logo容错

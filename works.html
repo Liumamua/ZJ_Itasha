@@ -93,18 +93,34 @@
                 </a>
             </div>
 
-            <!-- 桌面端导航 -->
+            <!-- 桌面端导航菜单 -->
             <nav class="hidden md:flex space-x-8">
                 <a href="index.html"
-                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">主页</a>
-                <a href="index.html#zhitong-intro"
-                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">痛车组介绍</a>
-                <a href="index.html#zhijiang"
-                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">枝江娱乐</a>
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="home">首页</a>
+                <!-- 痛车展示下拉菜单 -->
+                <div class="relative group">
+                    <a href="paincar_now.html"
+                        class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                        data-target="paincar">
+                        痛车展示
+                    </a>
+                    <!-- 下拉菜单 -->
+                    <div class="absolute top-full left-0 mt-2 w-48 bg-dark-secondary shadow-soft rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <a href="paincar_now.html" class="block px-4 py-3 text-sm sm:text-base text-dark-gray-200 hover:bg-dark-tertiary hover:text-dark-accent transition-colors duration-300 text-left">
+                            现役痛车
+                        </a>
+                        <a href="javascript:void(0)" class="block px-4 py-3 text-sm sm:text-base text-dark-gray-200 hover:bg-dark-tertiary hover:text-dark-accent transition-colors duration-300 text-left" onclick="if(confirm('已换版的过往作品或存在绝版人物，请在家长陪同下谨慎观看。')) { window.location.href = 'paincar_past.html'; }">
+                            英灵殿
+                        </a>
+                    </div>
+                </div>
                 <a href="paincar.html"
-                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300">痛车展示</a>
-                <a href="#"
-                    class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300">专辑作品&舞台</a>
+                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="paincar">线下活动</a>
+                <a href="works.html"
+                    class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 nav-link"
+                    data-target="intro-section">关于枝痛</a>
             </nav>
 
             <!-- 移动端菜单按钮 -->
@@ -117,15 +133,22 @@
         <div class="md:hidden hidden bg-dark-secondary shadow-soft absolute w-full" id="mobileMenu">
             <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
                 <a href="index.html"
-                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">主页</a>
-                <a href="index.html#zhitong-intro"
-                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">痛车组介绍</a>
-                <a href="index.html#zhijiang"
-                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">枝江娱乐</a>
+                    class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
+                    data-target="home">首页</a>
+                <div class="border-b border-dark-gray-800">
+                    <a href="paincar_now.html"
+                        class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 block mobile-nav-link"
+                        data-target="paincar">现役痛车</a>
+                    <a href="javascript:void(0)"
+                        class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 block mobile-nav-link"
+                        onclick="if(confirm('已换版的过往作品或存在绝版人物，请在家长陪同下谨慎观看。')) { window.location.href = 'paincar_past.html'; }">英灵殿</a>
+                </div>
                 <a href="paincar.html"
-                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800">痛车展示</a>
-                <a href="#"
-                    class="text-base font-light text-dark-accent transition-colors duration-300 py-2">专辑作品&舞台</a>
+                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
+                    data-target="paincar">线下活动</a>
+                <a href="works.html"
+                    class="text-base font-light text-dark-accent transition-colors duration-300 py-2 mobile-nav-link"
+                    data-target="intro-section">关于</a>
             </div>
         </div>
     </header>
@@ -314,15 +337,13 @@
 
     <!-- JavaScript -->
     <script>
-        // 导航栏滚动效果
+        // 导航栏滚动效果 - 修复宽度变化问题：仅保留阴影，移除padding变化
         window.addEventListener('scroll', function () {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('py-3', 'shadow-soft');
-                navbar.classList.remove('py-4');
+                navbar.classList.add('shadow-soft'); // 仅添加阴影，不修改padding
             } else {
-                navbar.classList.add('py-4');
-                navbar.classList.remove('py-3', 'shadow-soft');
+                navbar.classList.remove('shadow-soft'); // 仅移除阴影
             }
         });
 
@@ -341,15 +362,41 @@
             }
         });
 
-        // 当前页点击自身导航项无动作
-        document.querySelectorAll('a[href="#"]').forEach(link => {
+        // 导航点击逻辑
+        document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function (e) {
+                // 如果链接有onclick属性，跳过处理
+                if (this.hasAttribute('onclick')) {
+                    return;
+                }
+                
+                const target = this.getAttribute('data-target');
+
+                // 如果是外部链接（痛车展示/作品舞台），不阻止默认行为
+                if (target === 'paincar' || target === 'works') {
+                    return;
+                }
+
+                // 阻止默认跳转
                 e.preventDefault();
-                // 滚动到顶部
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+
+                // 主页回到顶部
+                if (target === 'home') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // 锚点滚动到对应区域
+                    const targetElement = document.getElementById(target);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
                 // 关闭移动端菜单
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
@@ -358,6 +405,25 @@
                     icon.classList.add('fa-bars');
                 }
             });
+        });
+
+        // Logo onerror容错处理（修复文本打印问题）
+        document.addEventListener('DOMContentLoaded', function () {
+            // 枝江娱乐Logo容错
+            const zjLogo = document.getElementById('zjLogo');
+            const zjLogoFallback = document.getElementById('zjLogoFallback');
+            zjLogo.onerror = function () {
+                zjLogo.style.display = 'none';
+                zjLogoFallback.style.display = 'inline-block';
+            };
+
+            // A-SOUL Logo容错
+            const asoulLogo = document.getElementById('asoulLogo');
+            const asoulLogoFallback = document.getElementById('asoulLogoFallback');
+            asoulLogo.onerror = function () {
+                asoulLogo.style.display = 'none';
+                asoulLogoFallback.style.display = 'inline-block';
+            };
         });
     </script>
 </body>
