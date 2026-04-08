@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>枝痛组 - 现役痛车</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="shortcut icon" href="/ZJ_Itasha/ZJ_Itasha_logo_color.ico" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { primary: "#08080e", secondary: "#0f0f1a", tertiary: "#16162a", accent: "#e88388" },
+                        member: { beila: "#DB7D74", jiaran: "#E799B0", nailin: "#576690", sinuo: "#7252C0", xinyi: "#C93773" }
+                    },
+                    fontFamily: { display: ['"Space Grotesk"', "sans-serif"], jp: ['"Noto Sans SC"', "sans-serif"] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .font-display {
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .bg-gradient-animate {
+            background: linear-gradient(135deg, #08080e 0%, #0f0a1e 25%, #0a0818 50%, #0f0a1e 75%, #08080e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .glass-card {
+            background: rgba(22, 22, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .divider-neon {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 45, 120, 0.5), rgba(0, 212, 255, 0.5), transparent);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #08080e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2d2d4a;
+            border-radius: 3px;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        body {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-animate font-jp text-gray-200 antialiased">
+
+    <!-- 导航栏 - 与index.html统一 -->
+    <header class="fixed w-full top-0 z-50 h-[72px] bg-[#08080e]/30 backdrop-blur-xl border-b border-white/10"
+        id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex justify-between items-center">
+            <!-- Logo区域 -->
+            <div class="flex items-center gap-5">
+                <div class="h-10 flex items-center justify-center">
+                    <img src="/ZJ_Itasha/pictures/logos/ZJ_Enter_light.png" alt="枝江娱乐Logo" class="h-full object-contain"
+                        id="zjLogo">
+                    <span class="hidden text-xs text-gray-400 ml-2" id="zjLogoFallback">枝江</span>
+                </div>
+                <div class="w-[2px] h-8 bg-gradient-to-b from-transparent via-white/30 to-transparent hidden sm:block">
+                </div>
+                <div class="h-5 flex items-center justify-center">
+                    <img src="/ZJ_Itasha/pictures/logos/A-SOUL_light.png" alt="A-SOUL Logo"
+                        class="h-full object-contain" id="asoulLogo">
+                    <span class="hidden text-xs text-gray-400" id="asoulLogoFallback">A-SOUL</span>
+                </div>
+            </div>
+
+            <!-- 枝痛组Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2 h-10 flex items-center justify-center">
+                <img src="/ZJ_Itasha/pictures/logos/ZJ_Ita_light.png" alt="枝痛组 Logo" class="h-full object-contain">
+            </div>
+
+            <!-- 桌面端导航菜单 -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="../index.html"
+                    class="text-base font-display text-gray-300 hover:text-white transition-colors duration-300 flex items-center nav-link">首页</a>
+                <div class="relative group flex items-center">
+                    <a href="cars_in_service.html"
+                        class="text-base font-display font-medium text-white transition-colors duration-300 cursor-pointer">痛车展示</a>
+                    <div
+                        class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 glass-card rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <a href="cars_in_service.html"
+                            class="block px-4 py-3 text-sm text-white hover:bg-white/5 transition-colors rounded-xl">现役痛车</a>
+                        <a href="javascript:void(0)"
+                            onclick="if(confirm('英灵殿内为已换版的过往作品或存在绝版人物的作品，请在家长陪同下谨慎观看。')){window.location.href='cars_retired.html';}"
+                            class="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors rounded-xl">英灵殿</a>
+                    </div>
+                </div>
+                <a href="activities.html"
+                    class="text-base font-display font-medium text-gray-300 hover:text-white transition-colors duration-300 flex items-center">线下应援</a>
+                <a href="index.html#intro-section"
+                    class="text-base font-display font-medium text-gray-300 hover:text-white transition-colors duration-300 flex items-center nav-link">关于枝痛</a>
+            </nav>
+
+            <button class="md:hidden text-lg text-gray-300 hover:text-white transition-colors" id="menuBtn"><i
+                    class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+    <!-- 移动端导航菜单 -->
+    <div class="md:hidden hidden glass-card border-t border-white/5 fixed top-[72px] left-0 right-0 z-40"
+        id="mobileMenu">
+        <div class="container mx-auto px-6 py-5 flex flex-col space-y-3">
+            <a href="index.html" class="text-base font-display text-white py-2 border-b border-white/5">首页</a>
+            <a href="cars_in_service.html"
+                class="text-base font-display text-white py-2 border-b border-white/5">现役痛车</a>
+            <a href="javascript:void(0)" onclick="confirmEnterPast()"
+                class="text-base font-display text-gray-300 hover:text-white py-2 border-b border-white/5 transition-colors">英灵殿</a>
+            <a href="activities.html"
+                class="text-base font-display text-gray-300 hover:text-white py-2 border-b border-white/5 transition-colors">线下应援</a>
+            <a href="index.html#intro-section"
+                class="text-base font-display text-gray-300 hover:text-white py-2 transition-colors">关于枝痛</a>
+        </div>
+    </div>
+
+    <!-- 内容区 -->
+    <section id="paincar" class="pt-24 pb-20 relative z-10">
+        <div class="max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 标题 -->
+            <div class="text-center mb-12 fade-up">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-display tracking-wide mb-4">现役痛车
+                </h2>
+                <div class="divider-neon max-w-md mx-auto mb-2"></div>
+                <p class="text-base text-gray-500">以下排序不分先后，纯看本人制作时先想起哪个。</p>
+            </div>
+
+            <!-- 车辆网格 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- 花嫁琳 -->
+                <a href="1.html" class="block fade-up" style="transition-delay: 0.2s">
+                    <div class="glass-card rounded-2xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/1073/800/450" alt="花嫁琳"
+                                class="w-full aspect-video object-cover">
+                            <div
+                                class="absolute top-3 right-3 glass-card-light px-3 py-1 rounded-full text-sm text-gray-300">
+                                AMG C63</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-white font-display">花嫁琳</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 帝江然 -->
+                <a href="2.html" class="block fade-up" style="transition-delay: 0.1s">
+                    <div class="glass-card rounded-2xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/1048/800/450" alt="帝江然"
+                                class="w-full aspect-video object-cover">
+                            <div
+                                class="absolute top-3 right-3 glass-card-light px-3 py-1 rounded-full text-sm text-gray-300">
+                                丰田 凯美瑞</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-white font-display">帝江然</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- FL5乃贝2 -->
+                <a href="3.html" class="block fade-up" style="transition-delay: 0.3s">
+                    <div class="glass-card rounded-2xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/1075/800/450" alt="乃贝"
+                                class="w-full aspect-video object-cover">
+                            <div
+                                class="absolute top-3 right-3 glass-card-light px-3 py-1 rounded-full text-sm text-gray-300">
+                                本田 Type R</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-white font-display">乃贝</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 睡衣然 -->
+                <a href="4.html" class="block fade-up" style="transition-delay: 0.35s">
+                    <div class="glass-card rounded-2xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/1076/800/450" alt="嘉然"
+                                class="w-full aspect-video object-cover">
+                            <div
+                                class="absolute top-3 right-3 glass-card-light px-3 py-1 rounded-full text-sm text-gray-300">
+                                大众 高尔夫GTI</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-white font-display">小驴然</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 思诺 -->
+                <a href="5.html" class="block fade-up" style="transition-delay: 0.15s">
+                    <div class="glass-card rounded-2xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/1072/800/450" alt="思诺"
+                                class="w-full aspect-video object-cover">
+                            <div
+                                class="absolute top-3 right-3 glass-card-light px-3 py-1 rounded-full text-sm text-gray-300">
+                                BMW M240i</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-white font-display">思诺</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 贝拉 -->
+                <a href="paincar_detail.html?id=beila" class="block fade-up" style="transition-delay: 0.15s">
+                    <div class="glass-card rounded-2xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/1072/800/450" alt="贝拉"
+                                class="w-full aspect-video object-cover">
+                            <div
+                                class="absolute top-3 right-3 glass-card-light px-3 py-1 rounded-full text-sm text-gray-300">
+                                AMG A35L</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-white font-display">贝拉</h3>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 枝江大联欢 -->
+                <a href="paincar_detail.html?id=zhi-jiang-da-lian-huan" class="block fade-up"
+                    style="transition-delay: 0.25s">
+                    <div class="glass-card rounded-2xl overflow-hidden card-hover">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/1074/800/450" alt="枝江大联欢"
+                                class="w-full aspect-video object-cover">
+                            <div
+                                class="absolute top-3 right-3 glass-card-light px-3 py-1 rounded-full text-sm text-gray-300">
+                                本田 奥德赛</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold text-white font-display">枝江大联欢</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark-secondary/60 backdrop-blur-xl py-10 border-t border-white/5 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-light mb-2 text-white">枝痛组</h3>
+                    <p class="text-gray-500 text-sm">以热爱为名 · 为枝江而行</p>
+                </div>
+                <div class="flex space-x-6 text-xl">
+                    <a href="https://space.bilibili.com/2010722019" target="_blank"
+                        class="text-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-bilibili"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-weibo"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-brands fa-wechat"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors duration-300"><i
+                            class="fa-solid fa-car"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-8 pt-8 text-center text-gray-600 text-sm">
+                <p>&copy; 2026 枝痛组 Z.J. Itasha 版权所有 | 本网站仅用于粉丝交流使用</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function confirmEnterPast() {
+            if (confirm('英灵殿内为已换版的过往作品或存在绝版人物的作品，请在家长陪同下谨慎观看。')) {
+                window.location.href = 'cars_retired.html';
+            }
+        }
+        (function () {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) { if (e.isIntersecting) { setTimeout(function () { e.target.classList.add("visible"); }, 100); observer.unobserve(e.target); } });
+            }, { threshold: 0.1 });
+            document.querySelectorAll(".fade-up").forEach(function (el) { observer.observe(el); });
+            setTimeout(function () { document.querySelectorAll(".fade-up").forEach(function (el) { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("visible"); }); }, 200);
+        })();
+        document.addEventListener('DOMContentLoaded', function () {
+            const zjLogo = document.getElementById('zjLogo');
+            if (zjLogo) zjLogo.onerror = function () { this.style.display = 'none'; const fb = document.getElementById('zjLogoFallback'); if (fb) fb.style.display = 'inline-block'; };
+            const asoulLogo = document.getElementById('asoulLogo');
+            if (asoulLogo) asoulLogo.onerror = function () { this.style.display = 'none'; const fb = document.getElementById('asoulLogoFallback'); if (fb) fb.style.display = 'inline-block'; };
+        });
+        window.addEventListener('scroll', function () {
+            var navbar = document.getElementById("navbar");
+            if (window.scrollY > 50) navbar.classList.add("shadow-lg", "shadow-black/30");
+            else navbar.classList.remove("shadow-lg", "shadow-black/30");
+        });
+        (function () {
+            var menuBtn = document.getElementById("menuBtn");
+            var mobileMenu = document.getElementById("mobileMenu");
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener("click", function () {
+                    mobileMenu.classList.toggle("hidden");
+                    var icon = menuBtn.querySelector("i");
+                    icon.classList.toggle("fa-bars"); icon.classList.toggle("fa-times");
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>

@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>枝痛组 </title>
+    <title>枝痛组-Z.J.Itasha</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="shortcut icon" href="/ZJ_Itasha/ZJ_Itasha_logo_color.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../ZJ_Itasha_logo_color.ico" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <script>
         tailwind.config = {
@@ -17,9 +17,9 @@
                 extend: {
                     colors: {
                         dark: {
-                            primary: '#121212',
-                            secondary: '#1e1e1e',
-                            tertiary: '#2d2d2d',
+                            primary: '#08080e',
+                            secondary: '#0f0f1a',
+                            tertiary: '#16162a',
                             accent: '#e88388',
                             gray: {
                                 100: '#f5f5f5',
@@ -43,6 +43,7 @@
                     },
                     fontFamily: {
                         jp: ['"Noto Sans SC"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
                     },
                     boxShadow: {
                         'soft': '0 4px 20px rgba(0, 0, 0, 0.2)',
@@ -72,11 +73,34 @@
                 min-height: 100vh;
                 display: flex;
                 align-items: center;
-                padding-top: 80px;
+                padding-top: 100px;
                 padding-bottom: 80px;
             }
-            .bg-texture {
-                background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+            /* 动态渐变背景 */
+            .bg-gradient-animate {
+                background: linear-gradient(135deg, #08080e 0%, #0f0a1e 25%, #0a0818 50%, #0f0a1e 75%, #08080e 100%);
+                background-size: 400% 400%;
+                animation: gradientShift 12s ease infinite;
+            }
+            @keyframes gradientShift {
+                0%, 100% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+            }
+            /* 彩色渐变分隔线 */
+            .divider-neon {
+                height: 1px;
+                background: linear-gradient(90deg, transparent 0%, #DB7D74 10%, #DB7D74 13%, #E799B0 27%, #E799B0 33%, #576690 47%, #576690 53%, #7252C0 67%, #7252C0 73%, #C93773 87%, #C93773 90%, transparent 100%);
+            }
+            /* 毛玻璃卡片效果 */
+            .glass-card {
+                background: rgba(22, 22, 42, 0.6);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .glass-card-light {
+                background: rgba(255, 255, 255, 0.04);
+                backdrop-filter: blur(16px);
+                border: 1px solid rgba(255, 255, 255, 0.06);
             }
             /* 成员卡片背景样式 */
             .member-card-bg {
@@ -92,7 +116,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: rgba(18, 18, 18, 0.7);
+                background: linear-gradient(180deg, rgba(8, 8, 14, 0.5) 0%, rgba(8, 8, 14, 0.9) 60%);
                 z-index: 1;
             }
             .member-card-content {
@@ -102,52 +126,59 @@
             /* 优化后的标签切换样式 - 核心修改 */
             .tab-switcher {
                 position: relative;
-                max-width: none; /* 取消最大宽度限制 */
-                width: 80%; /* 占满容器宽度 */
+                max-width: none;
+                width: 80%;
                 margin: 0 auto;
             }
-            /* 放大后的标签容器：100%宽度，更粗的分隔线 */
+            /* 标签容器 */
             .tabs {
                 display: flex;
                 gap: 0;
-                border-bottom: 3px solid #2d2d2d; /* 加粗分隔线 */
+                border-bottom: 2px solid rgba(255, 255, 255, 0.1);
                 margin: 0 auto 2rem;
-                width: 80%; /* 标签容器占满宽度 */
+                width: 80%;
             }
-            /* 放大的标签样式：更大的内边距和字体 */
+            /* 标签样式 */
             .tab {
-                padding: 16px 48px; /* 大幅放大内边距 */
+                padding: 14px 40px;
                 cursor: pointer;
                 transition: all 0.3s ease;
-                color: #bdbdbd; /* 未选中文字色 */
+                color: #9e9e9e;
                 font-weight: 500;
-                font-size: 1.25rem; /* 放大字体 */
+                font-size: 1.1rem;
                 position: relative;
                 background-color: transparent;
-                flex: 1; /* 标签均分宽度 */
-                text-align: center; /* 文字居中 */
+                flex: 1;
+                text-align: center;
             }
-            /* 选中标签的下划线：更粗更醒目 */
+            /* 选中标签的下划线 */
             .tab.active {
-                color: #e88388; /* accent色，保留原有配色 */
+                color: #fff;
+                background: rgba(255, 255, 255, 0.06);
             }
             .tab.active::after {
                 content: '';
                 position: absolute;
-                bottom: -3px; /* 匹配加粗的分隔线 */
-                left: 0;
-                width: 100%;
-                height: 3px; /* 加粗下划线 */
-                background-color: #e88388; /* accent色，保留原有配色 */
+                bottom: -2px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60%;
+                height: 2px;
+                background: linear-gradient(90deg, #DB7D74 0%, #DB7D74 13%, #E799B0 27%, #E799B0 33%, #576690 47%, #576690 53%, #7252C0 67%, #7252C0 73%, #C93773 87%, #C93773 100%);
             }
             /* 悬浮效果 */
             .tab:hover {
-                color: #e88388;
-                background-color: rgba(232, 131, 136, 0.1); /* 浅accent背景，保留原有配色 */
+                color: #e0e0e0;
+                background: rgba(255, 255, 255, 0.04);
             }
-            /* 优化的内容区动画：仅保留透明度，消除跳动感 */
+            /* 滚动条样式 */
+            ::-webkit-scrollbar { width: 6px; }
+            ::-webkit-scrollbar-track { background: #08080e; }
+            ::-webkit-scrollbar-thumb { background: #2d2d4a; border-radius: 3px; }
+            ::-webkit-scrollbar-thumb:hover { background: #3d3d5a; }
+            /* 内容区动画 */
             .tab-content {
-                transition: opacity 0s ease; /* 仅透明度过渡，移除位移 */
+                transition: opacity 0s ease;
                 opacity: 0;
                 pointer-events: none;
                 position: absolute;
@@ -160,140 +191,166 @@
                 pointer-events: all;
                 position: relative;
             }
+            /* 字体样式 */
+            .font-display {
+                font-family: "Space Grotesk", sans-serif;
+            }
+            /* Hero Logo 浮动动画 */
+            .hero-logo {
+                animation: floatLogo 4s ease-in-out infinite;
+            }
+            @keyframes floatLogo {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-12px); }
+            }
+            /* Hero 发光动画 */
+            .hero-glow {
+                animation: glowPulse 3s ease-in-out infinite;
+            }
+            @keyframes glowPulse {
+                0%, 100% { opacity: 0.3; filter: blur(40px); }
+                50% { opacity: 0.6; filter: blur(50px); }
+            }
+            /* 淡入上移动画 */
+            .fade-up {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+            .fade-up.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            /* 霓虹按钮 */
+            .btn-neon {
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+            .btn-neon:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 20px rgba(255, 45, 120, 0.2);
+            }
+            /* 成员卡片顶部发光 */
+            .member-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, var(--mc), transparent);
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+            .member-card:hover::before {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 
-<body class="bg-dark-primary font-jp text-dark-gray-200 antialiased">
-    <!-- 顶栏导航 - 修复宽度变化问题 + 替换Logo（修复onerror） -->
-    <header class="fixed w-full top-0 z-50 bg-dark-secondary/70 backdrop-blur-sm transition-all duration-500"
-        id="navbar">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+<body class="bg-gradient-animate font-jp text-gray-200 antialiased overflow-x-hidden">
+    <!-- 顶栏导航 -->
+    <header class="fixed w-full top-0 z-50 h-[72px] bg-[#08080e]/30 backdrop-blur-xl border-b border-white/10" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex justify-between items-center">
             <!-- Logo区域：枝江娱乐 + A-SOUL + 枝痛组 - 移除圆形容器，修复onerror -->
             <div class="flex items-center gap-5">
                 <!-- 枝江娱乐Logo（透明底 ZJ_Enter.png）- 修复onerror -->
                 <div class="h-10 flex items-center justify-center">
-                    <img src="/ZJ_Itasha/pictures/logos/ZJ_Enter_light.png" alt="枝江娱乐Logo" class="h-full object-contain"
+                    <img src="../ZJ_Itasha/pictures/logos/ZJ_Enter_light.png" alt="枝江娱乐Logo" class="h-full object-contain"
                         id="zjLogo">
                     <!-- 备用占位元素（提前创建，默认隐藏） -->
-                    <span class="hidden text-xs text-dark-gray-300 ml-2" id="zjLogoFallback">枝江</span>
+                    <span class="hidden text-xs text-gray-400 ml-2" id="zjLogoFallback">枝江</span>
                 </div>
 
-                <div class="w-[3px] h-10 bg-white mx-0 mb-auto"></div>
+                <div class="w-[2px] h-8 bg-gradient-to-b from-transparent via-white/30 to-transparent hidden sm:block"></div>
 
                 <!-- A-SOUL Logo（透明底 A-SOUL.png）- 修复onerror -->
-                <div class="h-6 flex items-center justify-center">
-                    <img src="/ZJ_Itasha/pictures/logos/A-SOUL_light.png" alt="A-SOUL Logo"
+                <div class="h-5 flex items-center justify-center">
+                    <img src="../ZJ_Itasha/pictures/logos/A-SOUL_light.png" alt="A-SOUL Logo"
                         class="h-full object-contain" id="asoulLogo">
                     <!-- 备用占位元素（提前创建，默认隐藏） -->
-                    <span class="hidden text-xs text-dark-gray-300 ml-2" id="asoulLogoFallback">A-SOUL</span>
+                    <span class="hidden text-xs text-gray-400" id="asoulLogoFallback">A-SOUL</span>
                 </div>
 
             </div>
 
-            <div class="flex items-center gap-5">
-
-                <!-- 枝痛组Logo+文字 -->
-                <div class="h-10 flex items-center justify-center">
-                    <img src="/ZJ_Itasha/pictures/logos/ZJ_Ita_light.png" alt="枝痛组 Logo"
-                        class="h-full object-contain" id="zjithaLogo">
-                    <!-- 备用占位元素（提前创建，默认隐藏） -->
-                    <span class="hidden text-xs text-dark-gray-300 ml-2" id="zjithaLogoFallback">枝痛组</span>
-                </div>
+            <!-- 枝痛组Logo+文字 -->
+            <div class="absolute left-1/2 -translate-x-1/2 h-10 flex items-center justify-center">
+                <img src="../ZJ_Itasha/pictures/logos/ZJ_Ita_light.png" alt="枝痛组 Logo"
+                    class="h-full object-contain" id="zjithaLogo">
             </div>
 
             <!-- 桌面端导航菜单 -->
-            <nav class="hidden md:flex space-x-8">
-                <a href="#"
-                    class="text-sm sm:text-base font-light text-dark-accent transition-colors duration-300 nav-link"
-                    data-target="home">首页</a>
-                <!-- 痛车展示下拉菜单 -->
-                <div class="relative group">
-                    <a href="paincar_now.html"
-                        class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
-                        data-target="paincar">
-                        痛车展示
-                    </a>
-                    <!-- 下拉菜单 -->
-                    <div
-                        class="absolute top-full left-0 mt-2 w-48 bg-dark-secondary shadow-soft rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                        <a href="paincar_now.html"
-                            class="block px-4 py-3 text-sm sm:text-base text-dark-gray-200 hover:bg-dark-tertiary hover:text-dark-accent transition-colors duration-300 text-left">
-                            现役痛车
-                        </a>
-                        <a href="javascript:void(0)"
-                            class="block px-4 py-3 text-sm sm:text-base text-dark-gray-200 hover:bg-dark-tertiary hover:text-dark-accent transition-colors duration-300 text-left"
-                            onclick="if(confirm('英灵殿内为已换版的过往作品或存在绝版人物的作品，请在家长陪同下谨慎观看。')) { window.location.href = 'paincar_past.html'; }">
-                            英灵殿
-                        </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-base font-display font-bold text-[#DB7D74] flex items-center nav-link" data-target="home">首页</a>
+                <div class="relative group flex items-center">
+                    <a href="cars_info/cars_in_service.html" class="text-base font-display font-medium text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer">痛车展示</a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 glass-card rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <a href="cars_info/cars_in_service.html" class="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors rounded-xl">现役痛车</a>
+                        <a href="javascript:void(0)" onclick="if(confirm('英灵殿内为已换版的过往作品或存在绝版人物的作品，请在家长陪同下谨慎观看。')){window.location.href='cars_info/cars_retired.html';}" class="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors rounded-xl">英灵殿</a>
                     </div>
                 </div>
-                <a href="paincar.html"
-                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
-                    data-target="paincar">线下活动</a>
-                <a href="#"
-                    class="text-sm sm:text-base font-light hover:text-dark-accent transition-colors duration-300 nav-link"
-                    data-target="intro-section">关于枝痛</a>
+                <a href="activities.html" class="text-base font-display font-medium text-gray-300 hover:text-white transition-colors duration-300 flex items-center">线下应援</a>
+                <a href="#" class="text-base font-display font-medium text-gray-300 hover:text-white transition-colors duration-300 flex items-center nav-link" data-target="intro-section">关于枝痛</a>
             </nav>
 
             <!-- 移动端菜单按钮 -->
-            <button class="md:hidden text-lg text-dark-gray-200" id="menuBtn">
+            <button class="md:hidden text-lg text-gray-300 hover:text-white transition-colors" id="menuBtn">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
-        <!-- 移动端导航菜单 -->
-        <div class="md:hidden hidden bg-dark-secondary shadow-soft absolute w-full" id="mobileMenu">
-            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
-                <a href="#"
-                    class="text-base font-light text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
-                    data-target="home">首页</a>
-                <div class="border-b border-dark-gray-800">
-                    <a href="paincar_now.html"
-                        class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 block mobile-nav-link"
-                        data-target="paincar">现役痛车</a>
-                    <a href="javascript:void(0)"
-                        class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 block mobile-nav-link"
-                        onclick="confirmEnterPast()">英灵殿</a>
-                </div>
-                <a href="paincar.html"
-                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 border-b border-dark-gray-800 mobile-nav-link"
-                    data-target="paincar">线下活动</a>
-                <a href="#"
-                    class="text-base font-light hover:text-dark-accent transition-colors duration-300 py-2 mobile-nav-link"
-                    data-target="intro-section">关于</a>
-            </div>
-        </div>
     </header>
+    <!-- 移动端导航菜单 -->
+    <div class="md:hidden hidden glass-card border-t border-white/5 fixed top-[72px] left-0 right-0 z-40" id="mobileMenu">
+        <div class="container mx-auto px-6 py-5 flex flex-col space-y-3">
+            <a href="#" class="text-base font-display text-white py-2 border-b border-white/5 mobile-nav-link" data-target="home">首页</a>
+            <a href="cars_info/cars_in_service.html" class="text-base font-display text-gray-300 hover:text-white py-2 border-b border-white/5 transition-colors">现役痛车</a>
+            <a href="javascript:void(0)" onclick="confirmEnterPast()" class="text-base font-display text-gray-300 hover:text-white py-2 border-b border-white/5 transition-colors">英灵殿</a>
+            <a href="activities.html" class="text-base font-display text-gray-300 hover:text-white py-2 border-b border-white/5 transition-colors">线下应援</a>
+            <a href="#" class="text-base font-display text-gray-300 hover:text-white py-2 mobile-nav-link" data-target="intro-section">关于枝痛</a>
+        </div>
+    </div>
 
     <!-- 主页核心内容：成员合照 + Slogan -->
-    <section id="home"
-        class="h-screen flex items-center justify-center bg-dark-primary bg-texture relative overflow-hidden">
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- 成员合照背景 -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-dark-primary/50"></div>
-            <img src="/ZJ_Itasha/pictures/illustration/第三期合照.jpg" alt="枝江成员合照" class="w-full h-full object-cover">
+            <img src="../ZJ_Itasha/pictures/illustration/第三期合照.jpg" alt="枝江成员合照" class="w-full h-full object-cover">
         </div>
+
+        <!-- 发光效果背景 -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-white/5 hero-glow blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-white/3 hero-glow blur-3xl" style="animation-delay: 1.5s"></div>
 
         <!-- Slogan悬浮层 -->
-        <div class="container mx-auto px-4 z-10 text-center">
-
-            <div class="h-60 flex items-center justify-center mb-8">
-                <img src="/ZJ_Itasha/pictures/logos/ZJ_Ita_text_color_light.png" alt="枝痛组 Logo"
-                    class="h-full object-contain" id="zjithaLogo">
-                <!-- 备用占位元素（提前创建，默认隐藏） -->
-                <span class="hidden text-xs text-dark-gray-300 ml-2" id="zjithaLogoFallback">枝痛组</span>
+        <div class="relative z-10 text-center px-4">
+            <div class="hero-logo mb-8 inline-block">
+                <img src="../ZJ_Itasha/pictures/logos/ZJ_Ita_text_color_light.png" alt="枝痛组 Logo"
+                    class="h-44 sm:h-56 lg:h-64 object-contain drop-shadow-2xl" id="zjithaLogo">
+                <span class="hidden text-xs text-gray-400 ml-2" id="zjithaLogoFallback">枝痛组</span>
             </div>
-
-            <a href="#"
-                class="inline-block bg-dark-tertiary text-dark-gray-100 px-8 py-3 rounded-full text-sm font-medium shadow-soft hover:shadow-hover transition-all duration-300 border border-dark-gray-700 nav-link"
-                data-target="intro-section">
-                了解更多 <i class="fa-solid fa-arrow-down ml-2 text-xs"></i>
-            </a>
+            <div class="fade-up" style="animation-delay: 0.3s">
+                <p class="font-display text-base sm:text-lg text-gray-400 tracking-widest uppercase mb-8">// 以热爱为名 · 为枝江而行 //</p>
+            </div>
+            <div class="fade-up" style="animation-delay: 0.6s">
+                <a href="#"
+                    class="btn-neon inline-flex items-center gap-3 bg-dark-tertiary text-white px-10 py-4 rounded-full text-sm font-display font-medium border border-gray-700 hover:border-gray-600 nav-link"
+                    data-target="intro-section">
+                    了解更多 <i class="fa-solid fa-chevron-down text-xs text-gray-500"></i>
+                </a>
+            </div>
         </div>
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark-primary to-transparent"></div>
     </section>
 
-    <!-- 标签切换介绍区域 + 成员介绍（移除"关于我们"标题） -->
+    <!-- 彩色渐变分隔线 -->
+    <div class="divider-neon mx-auto max-w-5xl"></div>
+
+    <!-- 标签切换介绍区域 + 成员介绍 -->
     <section id="intro-section" class="full-screen-section bg-dark-primary bg-texture">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <!-- 标签切换介绍区域（宽度改为80%，移除横线） -->
@@ -306,279 +363,182 @@
                         <div class="tab" data-tab="zhitong">枝痛组</div>
                     </div>
 
-                    <!-- 标签内容：枝痛组（宽度80%，恢复h3样式） -->
+                    <!-- 标签内容：枝痛组 -->
                     <div class="tab-content" id="zhitongContent">
-                        <div class="max-w-[80%] mx-auto bg-dark-secondary/50 rounded-2xl p-12 shadow-soft">
-                            <!-- <h3 class="text-xl sm:text-2xl font-medium mb-6 text-center text-dark-gray-100 font-jp">
-                                关于——枝痛组</h3> -->
-                            <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg font-jp">
+                        <div class="max-w-[80%] mx-auto glass-card rounded-3xl p-8 sm:p-12 border border-white/10">
+                            <div class="space-y-5 text-gray-300 leading-loose text-base sm:text-lg">
                                 <p class="text-left">
-                                    枝痛组成立于2021年，是一个由热爱枝江偶像与汽车文化的粉丝自发组建的痛车团体，核心以围绕枝江娱乐现役成员为主题打造专属痛车。
+                                    <span class="text-white font-bold">枝痛组</span> 成立于2021年，是一个由热爱枝江偶像与汽车文化的粉丝自发组建的痛车团体，核心以围绕枝江娱乐现役成员为主题打造专属痛车。
                                 </p>                                
-                                <p class="text-left">
-                                    枝痛组不仅专注于枝江成员主题痛车的制作，同时还积极组织线下展车应援、车友交流等活动。
-                                </p>
+                                <p class="text-left">枝痛组不仅专注于枝江成员主题痛车的制作，同时还积极组织线下展车应援、车友交流等活动。</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                                    <div class="glass-card-light rounded-xl p-4 text-center">
+                                        <div class="text-2xl mb-2">🚗</div>
+                                        <div class="font-display text-sm text-gray-300">痛车制作</div>
+                                    </div>
+                                    <div class="glass-card-light rounded-xl p-4 text-center">
+                                        <div class="text-2xl mb-2">🎪</div>
+                                        <div class="font-display text-sm text-gray-300">线下应援</div>
+                                    </div>
+                                    <div class="glass-card-light rounded-xl p-4 text-center">
+                                        <div class="text-2xl mb-2">🤝</div>
+                                        <div class="font-display text-sm text-gray-300">车友交流</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 标签内容：枝江娱乐（宽度80%，恢复h3样式） -->
+                    <!-- 标签内容：枝江娱乐 -->
                     <div class="tab-content active" id="zhijiangContent">
-                        <div class="max-w-[80%] mx-auto bg-dark-secondary/50 rounded-2xl p-12 shadow-soft">
-                            <!-- <h3 class="text-xl sm:text-2xl font-medium mb-6 text-center text-dark-gray-100 font-jp">
-                                关于——枝江娱乐</h3> -->
-                            <div class="space-y-6 text-dark-gray-300 leading-relaxed text-base sm:text-lg font-jp">
-                                <p class="text-left">
-                                    枝江娱乐隶属于乐华娱乐旗下，是国内顶尖的虚拟偶像运营厂牌。枝江娱乐旗下拥有A-SOUL灵境少女、闪耀舞台、银河商店等虚拟偶像企划，定位是枝江最大的娱乐造梦工厂，致力于将最强的枝江娱乐体验传递给一个魂。
-                                </p>
-                                <p class="text-left">
-                                    A-SOUL作为枝江娱乐的核心团体，自2020年出道以来，凭借专业的舞台表现、真实的人格塑造和深度的粉丝互动，成为虚拟偶像行业的标杆。
-                                </p>
-                                <p class="text-left">
-                                    2023年推出的「闪耀舞台」二期计划，延续了枝江娱乐的高品质制作理念，为虚拟偶像行业注入了新的活力。
-                                </p>
-                                <p class="text-left">
-                                    至于银河商店，我祝她们好运。
-                                </p>
+                        <div class="max-w-[80%] mx-auto glass-card rounded-3xl p-8 sm:p-12 border border-white/10">
+                            <div class="space-y-5 text-gray-300 leading-loose text-base sm:text-lg">
+                                <p class="text-left">枝江娱乐隶属于乐华娱乐旗下，是国内顶尖的虚拟偶像运营厂牌。旗下拥有 A-SOUL灵境少女、闪耀舞台、银河商店等虚拟偶像企划，定位是枝江最大的娱乐造梦工厂，致力于将最强的枝江娱乐体验传递给一个魂。</p>
+                                <p class="text-left">A-SOUL 作为枝江娱乐的核心企划，自2020年出道以来，凭借专业的舞台表现、真实的人格塑造和深度的粉丝互动，成为虚拟偶像行业的标杆。</p>
+                                <p class="text-left">2023年推出的「闪耀舞台」二期计划，延续了枝江娱乐的高品质制作理念，为虚拟偶像行业注入了新的活力。</p>
+                                <p class="text-left text-gray-500 italic">&mdash; 至于银河商店，我祝她们好运。</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 成员介绍板块（完全保留原有设计） -->
-            <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-light mb-12 text-center text-dark-gray-100 tracking-wide">
-                枝江娱乐成员</h2>
+            <!-- 成员介绍板块 -->
+            <div class="text-center mb-16">
+                <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-white mb-3">枝江娱乐成员</h3>
+                <div class="w-20 h-[2px] mx-auto" style="background: linear-gradient(90deg, #DB7D74 0%, #DB7D74 13%, #E799B0 27%, #E799B0 33%, #576690 47%, #576690 53%, #7252C0 67%, #7252C0 73%, #C93773 87%, #C93773 100%)"></div>
+            </div>
 
             <!-- 成员卡片布局：保留标题分隔，A-SOUL占3份，闪耀舞台占2份 -->
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                <!-- A-SOUL 成员 - 占3列，保留标题分隔 -->
+                <!-- A-SOUL 成员 - 占3列 -->
                 <div class="lg:col-span-3">
-                    <h4 class="text-3xl font-medium mb-6 text-center text-dark-gray-200">A-SOUL 成员</h4>
-                    <!-- <p class="text-sm text-dark-gray-400 mb-8 text-center">枝江娱乐核心团体，出道即巅峰的虚拟偶像标杆</p> -->
-                    <div class="w-80 h-[2px] bg-white mx-auto mb-4"></div>
+                    <h4 class="font-display text-2xl font-semibold text-center text-gray-200 mb-2">A-SOUL</h4>
+                    <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-6"></div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <!-- 贝拉 -->
-                        <div class="member-card-bg bg-member-beila/10 rounded-2xl overflow-hidden card-hover"
-                            style="background-image: url('/ZJ_Itasha/pictures/illustration/beila.png');">
-                            <div class="member-card-content p-6 h-full flex flex-col">
-                                <!-- 头像 -->
-                                <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="/ZJ_Itasha/pictures/avatar/beila.jpg" alt="贝拉头像"
-                                        class="w-full h-full object-cover">
-                                </div>
-
-                                <!-- B站ID -->
-                                <h4 class="text-center text-lg font-medium mb-2 text-member-beila">@贝拉kira</h4>
-
-                                <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">元气满满的A-SOUL舞担参上~目标TOP IDOL，一起加油！
-                                </p>
-
-                                <!-- 基础信息 -->
-                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>7月17日
-                                    </p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>贝极星
-                                    </p>
-                                    <p class="text-center"><span
-                                            class="font-medium text-dark-gray-300">应援色：</span>#DB7D74</p>
-                                </div>
-
-                                <!-- 分割线 -->
-                                <div class="w-12 h-[3px] bg-member-beila/50 mx-auto mb-4"></div>
-
-                                <!-- B站简介 & 人设特点 -->
-                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">舞台王者：</span>元气满满的A-SOUL舞担参上~目标TOP
-                                        IDOL，一起加油！</p>
-                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>外锅内锤的牛牛队长，性格直爽有担当，舞蹈实力拉满
-                                    </p>
-                                </div>
-
-                                <!-- 雷达图 -->
-                                <div class="radar-container mt-auto">
-                                    <canvas id="beilaChart"></canvas>
+                        <div class="member-card rounded-2xl overflow-hidden glass-card card-hover" style="--mc: #DB7D74">
+                            <div class="member-card-bg" style="background-image: url('/ZJ_Itasha/pictures/illustration/beila.png')">
+                                <div class="member-card-content p-6 h-full flex flex-col">
+                                    <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden border-2 border-[#DB7D74]/30">
+                                        <img src="/ZJ_Itasha/pictures/avatar/beila.jpg" alt="贝拉" class="w-full h-full object-cover">
+                                    </div>
+                                    <h5 class="text-center text-lg font-medium mb-2 text-[#DB7D74]">@贝拉kira</h5>
+                                    <p class="text-center text-gray-300 text-sm mb-4">元气满满的A-SOUL舞担参上~目标TOP IDOL，一起加油！</p>
+                                    <div class="text-xs text-gray-400 space-y-1 mb-4">
+                                        <p class="text-center"><span class="font-medium text-gray-300">生日：</span>7月17日</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">粉丝名：</span>贝极星</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">应援色：</span>#DB7D74</p>
+                                    </div>
+                                    <div class="w-12 h-[3px] bg-[#DB7D74]/50 mx-auto mb-4"></div>
+                                    <div class="text-xs text-gray-400 space-y-2 mb-4 flex-grow">
+                                        <p><span class="font-medium text-gray-300">舞台王者：</span>元气满满的A-SOUL舞担参上~目标TOP IDOL，一起加油！</p>
+                                        <p><span class="font-medium text-gray-300">人设特点：</span>外锅内锤的牛牛队长，性格直爽有担当，舞蹈实力拉满</p>
+                                    </div>
+                                    <div class="radar-container mt-auto"><canvas id="beilaChart"></canvas></div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 嘉然 -->
-                        <div class="member-card-bg bg-member-jiaran/10 rounded-2xl overflow-hidden card-hover"
-                            style="background-image: url('/ZJ_Itasha/pictures/illustration/jiaran.png');">
-                            <div class="member-card-content p-6 h-full flex flex-col">
-                                <!-- 头像 -->
-                                <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="/ZJ_Itasha//pictures/avatar/jiaran.jpg" alt="嘉然头像"
-                                        class="w-full h-full object-cover">
-                                </div>
-
-                                <!-- B站ID -->
-                                <h4 class="text-center text-lg font-medium mb-2 text-member-jiaran">@嘉然今天吃什么</h4>
-
-                                <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">这里是嘉然！别看我小小的，我超能吃还超可爱的哦~</p>
-
-                                <!-- 基础信息 -->
-                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>3月7日
-                                    </p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>嘉心糖
-                                    </p>
-                                    <p class="text-center"><span
-                                            class="font-medium text-dark-gray-300">应援色：</span>#E799B0</p>
-                                </div>
-
-                                <!-- 分割线 -->
-                                <div class="w-12 h-[3px] bg-member-jiaran/50 mx-auto mb-4"></div>
-
-                                <!-- B站简介 & 人设特点 -->
-                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">枝江高人：</span>~</p>
-                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>治愈系笑容，温柔又有韧性，干饭第一名</p>
-                                </div>
-
-                                <!-- 雷达图 -->
-                                <div class="radar-container mt-auto">
-                                    <canvas id="jiaranChart"></canvas>
+                        <div class="member-card rounded-2xl overflow-hidden glass-card card-hover" style="--mc: #E799B0">
+                            <div class="member-card-bg" style="background-image: url('/ZJ_Itasha/pictures/illustration/jiaran.png')">
+                                <div class="member-card-content p-6 h-full flex flex-col">
+                                    <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden border-2 border-[#E799B0]/30">
+                                        <img src="/ZJ_Itasha/pictures/avatar/jiaran.jpg" alt="嘉然" class="w-full h-full object-cover">
+                                    </div>
+                                    <h5 class="text-center text-lg font-medium mb-2 text-[#E799B0]">@嘉然今天吃什么</h5>
+                                    <p class="text-center text-gray-300 text-sm mb-4">这里是嘉然！别看我小小的，我超能吃还超可爱的哦~</p>
+                                    <div class="text-xs text-gray-400 space-y-1 mb-4">
+                                        <p class="text-center"><span class="font-medium text-gray-300">生日：</span>3月7日</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">粉丝名：</span>嘉心糖</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">应援色：</span>#E799B0</p>
+                                    </div>
+                                    <div class="w-12 h-[3px] bg-[#E799B0]/50 mx-auto mb-4"></div>
+                                    <div class="text-xs text-gray-400 space-y-2 mb-4 flex-grow">
+                                        <p><span class="font-medium text-gray-300">枝江高人：</span>~</p>
+                                        <p><span class="font-medium text-gray-300">人设特点：</span>治愈系笑容，温柔又有韧性，干饭第一名</p>
+                                    </div>
+                                    <div class="radar-container mt-auto"><canvas id="jiaranChart"></canvas></div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 乃琳 -->
-                        <div class="member-card-bg bg-member-nailin/10 rounded-2xl overflow-hidden card-hover"
-                            style="background-image: url('/ZJ_Itasha/pictures/illustration/nailin.png');">
-                            <div class="member-card-content p-6 h-full flex flex-col">
-                                <!-- 头像 -->
-                                <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="/ZJ_Itasha/pictures/avatar/nailin.jpg" alt="乃琳头像"
-                                        class="w-full h-full object-cover">
-                                </div>
-
-                                <!-- B站ID -->
-                                <h4 class="text-center text-lg font-medium mb-2 text-member-nailin">@乃琳Queen</h4>
-
-                                <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">喜欢听你说，开心和不开心的，都告诉我吧~</p>
-
-                                <!-- 基础信息 -->
-                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>8月8日
-                                    </p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>奶淇琳
-                                    </p>
-                                    <p class="text-center"><span
-                                            class="font-medium text-dark-gray-300">应援色：</span>#576690</p>
-                                </div>
-
-                                <!-- 分割线 -->
-                                <div class="w-12 h-[3px] bg-member-nailin/50 mx-auto mb-4"></div>
-
-                                <!-- B站简介 & 人设特点 -->
-                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">优雅知性的雕：</span>喜欢听你说，开心和不开心的，都告诉我吧~
-                                    </p>
-                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>情商高口才好，温柔中带着小调皮，主持担当</p>
-                                </div>
-
-                                <!-- 雷达图 -->
-                                <div class="radar-container mt-auto">
-                                    <canvas id="nailinChart"></canvas>
+                        <div class="member-card rounded-2xl overflow-hidden glass-card card-hover" style="--mc: #576690">
+                            <div class="member-card-bg" style="background-image: url('/ZJ_Itasha/pictures/illustration/nailin.png')">
+                                <div class="member-card-content p-6 h-full flex flex-col">
+                                    <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden border-2 border-[#576690]/30">
+                                        <img src="/ZJ_Itasha/pictures/avatar/nailin.jpg" alt="乃琳" class="w-full h-full object-cover">
+                                    </div>
+                                    <h5 class="text-center text-lg font-medium mb-2 text-[#576690]">@乃琳Queen</h5>
+                                    <p class="text-center text-gray-300 text-sm mb-4">喜欢听你说，开心和不开心的，都告诉我吧~</p>
+                                    <div class="text-xs text-gray-400 space-y-1 mb-4">
+                                        <p class="text-center"><span class="font-medium text-gray-300">生日：</span>8月8日</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">粉丝名：</span>奶淇琳</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">应援色：</span>#576690</p>
+                                    </div>
+                                    <div class="w-12 h-[3px] bg-[#576690]/50 mx-auto mb-4"></div>
+                                    <div class="text-xs text-gray-400 space-y-2 mb-4 flex-grow">
+                                        <p><span class="font-medium text-gray-300">优雅知性的雕：</span>喜欢听你说，开心和不开心的，都告诉我吧~</p>
+                                        <p><span class="font-medium text-gray-300">人设特点：</span>情商高口才好，温柔中带着小调皮，主持担当</p>
+                                    </div>
+                                    <div class="radar-container mt-auto"><canvas id="nailinChart"></canvas></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 闪耀舞台 成员 - 占2列，保留标题分隔 -->
+                <!-- 闪耀舞台 成员 - 占2列 -->
                 <div class="lg:col-span-2">
-                    <h4 class="text-3xl font-medium mb-6 text-center text-dark-gray-200">闪耀舞台成员</h4>
-                    <!-- <p class="text-sm text-dark-gray-400 mb-8 text-center">枝江娱乐全新企划，活力满满的新生代虚拟偶像</p> -->
-                    <div class="w-80 h-[2px] bg-white mx-auto mb-4"></div>
+                    <h4 class="font-display text-2xl font-semibold text-center text-gray-200 mb-2">闪耀舞台</h4>
+                    <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-6"></div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- 思诺Gladys -->
-                        <div class="member-card-bg bg-member-sinuo/10 rounded-2xl overflow-hidden card-hover"
-                            style="background-image: url('/ZJ_Itasha/pictures/illustration/sinuo.png');">
-                            <div class="member-card-content p-6 h-full flex flex-col">
-                                <!-- 头像 -->
-                                <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="/ZJ_Itasha/pictures/avatar/sinuo.jpg" alt="思诺头像"
-                                        class="w-full h-full object-cover">
-                                </div>
-
-                                <!-- B站ID -->
-                                <h4 class="text-center text-lg font-medium mb-2 text-member-sinuo">@思诺Gladys</h4>
-
-                                <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">一首歌征服不了你，那就两首。</p>
-
-                                <!-- 基础信息 -->
-                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>4月12日
-                                    </p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>诺米
-                                    </p>
-                                    <p class="text-center"><span
-                                            class="font-medium text-dark-gray-300">应援色：</span>#7252C0
-                                    </p>
-                                </div>
-
-                                <!-- 分割线 -->
-                                <div class="w-12 h-[3px] bg-member-sinuo/50 mx-auto mb-4"></div>
-
-                                <!-- B站简介 & 人设特点 -->
-                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>枝江二期-思诺，元气满满向前冲！</p>
-                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>性格开朗直爽，天然呆，说唱和架子鼓超棒</p>
-                                </div>
-
-                                <!-- 雷达图 -->
-                                <div class="radar-container mt-auto">
-                                    <canvas id="sinuoChart"></canvas>
+                        <!-- 思诺 -->
+                        <div class="member-card rounded-2xl overflow-hidden glass-card card-hover" style="--mc: #7252C0">
+                            <div class="member-card-bg" style="background-image: url('/ZJ_Itasha/pictures/illustration/sinuo.png')">
+                                <div class="member-card-content p-6 h-full flex flex-col">
+                                    <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden border-2 border-[#7252C0]/30">
+                                        <img src="/ZJ_Itasha/pictures/avatar/sinuo.jpg" alt="思诺" class="w-full h-full object-cover">
+                                    </div>
+                                    <h5 class="text-center text-lg font-medium mb-2 text-[#7252C0]">@思诺Gladys</h5>
+                                    <p class="text-center text-gray-300 text-sm mb-4">一首歌征服不了你，那就两首。</p>
+                                    <div class="text-xs text-gray-400 space-y-1 mb-4">
+                                        <p class="text-center"><span class="font-medium text-gray-300">生日：</span>4月12日</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">粉丝名：</span>诺米</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">应援色：</span>#7252C0</p>
+                                    </div>
+                                    <div class="w-12 h-[3px] bg-[#7252C0]/50 mx-auto mb-4"></div>
+                                    <div class="text-xs text-gray-400 space-y-2 mb-4 flex-grow">
+                                        <p><span class="font-medium text-gray-300">B站简介：</span>枝江二期-思诺，元气满满向前冲！</p>
+                                        <p><span class="font-medium text-gray-300">人设特点：</span>性格开朗直爽，天然呆，说唱和架子鼓超棒</p>
+                                    </div>
+                                    <div class="radar-container mt-auto"><canvas id="sinuoChart"></canvas></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 心宜Fiona -->
-                        <div class="member-card-bg bg-member-xinyi/10 rounded-2xl overflow-hidden card-hover"
-                            style="background-image: url('/ZJ_Itasha/pictures/illustration/xinyi.png');">
-                            <div class="member-card-content p-6 h-full flex flex-col">
-                                <!-- 头像 -->
-                                <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden">
-                                    <img src="/ZJ_Itasha/pictures/avatar/xinyi.jpg" alt="心宜头像"
-                                        class="w-full h-full object-cover">
-                                </div>
-
-                                <!-- B站ID -->
-                                <h4 class="text-center text-lg font-medium mb-2 text-member-xinyi">@心宜Fiona</h4>
-
-                                <!-- 一句话简介 -->
-                                <p class="text-center text-dark-gray-300 text-sm mb-4">到我出场了吗！所有目光看向我！
-                                </p>
-
-                                <!-- 基础信息 -->
-                                <div class="text-xs text-dark-gray-400 space-y-1 mb-4">
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">生日：</span>9月21日
-                                    </p>
-                                    <p class="text-center"><span class="font-medium text-dark-gray-300">粉丝名：</span>宜家人
-                                    </p>
-                                    <p class="text-center"><span
-                                            class="font-medium text-dark-gray-300">应援色：</span>#C93773
-                                    </p>
-                                </div>
-
-                                <!-- 分割线 -->
-                                <div class="w-12 h-[3px] bg-member-xinyi/50 mx-auto mb-4"></div>
-
-                                <!-- B站简介 & 人设特点 -->
-                                <div class="text-xs text-dark-gray-400 space-y-2 mb-4 flex-grow">
-                                    <p><span class="font-medium text-dark-gray-300">B站简介：</span>枝江二期-心宜，用歌声治愈你~</p>
-                                    <p><span class="font-medium text-dark-gray-300">人设特点：</span>慢热型人格，美声超棒，记忆力超群的细节控</p>
-                                </div>
-
-                                <!-- 雷达图 -->
-                                <div class="radar-container mt-auto">
-                                    <canvas id="xinyiChart"></canvas>
+                        <!-- 心宜 -->
+                        <div class="member-card rounded-2xl overflow-hidden glass-card card-hover" style="--mc: #C93773">
+                            <div class="member-card-bg" style="background-image: url('/ZJ_Itasha/pictures/illustration/xinyi.png')">
+                                <div class="member-card-content p-6 h-full flex flex-col">
+                                    <div class="w-24 h-24 rounded-full bg-dark-tertiary mx-auto mb-4 overflow-hidden border-2 border-[#C93773]/30">
+                                        <img src="/ZJ_Itasha/pictures/avatar/xinyi.jpg" alt="心宜" class="w-full h-full object-cover">
+                                    </div>
+                                    <h5 class="text-center text-lg font-medium mb-2 text-[#C93773]">@心宜Fiona</h5>
+                                    <p class="text-center text-gray-300 text-sm mb-4">到我出场了吗！所有目光看向我！</p>
+                                    <div class="text-xs text-gray-400 space-y-1 mb-4">
+                                        <p class="text-center"><span class="font-medium text-gray-300">生日：</span>9月21日</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">粉丝名：</span>宜家人</p>
+                                        <p class="text-center"><span class="font-medium text-gray-300">应援色：</span>#C93773</p>
+                                    </div>
+                                    <div class="w-12 h-[3px] bg-[#C93773]/50 mx-auto mb-4"></div>
+                                    <div class="text-xs text-gray-400 space-y-2 mb-4 flex-grow">
+                                        <p><span class="font-medium text-gray-300">B站简介：</span>枝江二期-心宜，用歌声治愈你~</p>
+                                        <p><span class="font-medium text-gray-300">人设特点：</span>慢热型人格，美声超棒，记忆力超群的细节控</p>
+                                    </div>
+                                    <div class="radar-container mt-auto"><canvas id="xinyiChart"></canvas></div>
                                 </div>
                             </div>
                         </div>
@@ -588,26 +548,22 @@
         </div>
     </section>
     <!-- 底部版权信息 -->
-    <footer class="bg-dark-secondary py-8 border-t border-dark-gray-800">
+    <footer class="bg-dark-secondary/60 backdrop-blur-xl py-10 border-t border-white/5 relative z-10">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0 text-center md:text-left">
-                    <h3 class="text-xl font-light mb-2">枝痛组</h3>
-                    <p class="text-dark-gray-500 text-sm">以热爱为名 · 为枝江而行</p>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-light mb-2 text-white">枝痛组</h3>
+                    <p class="text-gray-500 text-sm">以热爱为名 · 为枝江而行</p>
                 </div>
-                <div class="flex space-x-6 text-lg">
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
-                            class="fa-brands fa-bilibili"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
-                            class="fa-brands fa-weibo"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
-                            class="fa-brands fa-wechat"></i></a>
-                    <a href="#" class="text-dark-gray-500 hover:text-white transition-colors duration-300"><i
-                            class="fa-solid fa-car"></i></a>
+                <div class="flex space-x-6 text-xl">
+                    <a href="https://space.bilibili.com/2010722019" target="_blank" class="text-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-bilibili"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-weibo"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors duration-300"><i class="fa-brands fa-wechat"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors duration-300"><i class="fa-solid fa-car"></i></a>
                 </div>
             </div>
-            <div class="border-t border-dark-gray-800 mt-8 pt-8 text-center text-dark-gray-600 text-sm">
-                <p>© 2026 枝痛组Z.J. Itasha 版权所有 | 本网站仅用于粉丝交流使用</p>
+            <div class="border-t border-white/5 mt-8 pt-8 text-center text-gray-600 text-sm">
+                <p>&copy; 2026 枝痛组 Z.J. Itasha 版权所有 | 本网站仅用于粉丝交流使用</p>
             </div>
         </div>
     </footer>
@@ -617,36 +573,57 @@
         // 确认进入英灵殿 - 全局函数
         function confirmEnterPast() {
             if (confirm('英灵殿内为已换版的过往作品或存在绝版人物的作品，请在家长陪同下谨慎观看。')) {
-                window.location.href = 'paincar_past.html';
+                window.location.href = 'cars_info/cars_retired.html';
             }
         }
 
-        // Logo onerror容错处理（修复文本打印问题）
+        // 入场动画
         document.addEventListener('DOMContentLoaded', function () {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        setTimeout(function() { e.target.classList.add("visible"); }, 100);
+                        observer.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll(".fade-up").forEach(function(el) { observer.observe(el); });
+            setTimeout(function() {
+                document.querySelectorAll(".fade-up").forEach(function(el) {
+                    var rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) el.classList.add("visible");
+                });
+            }, 200);
+
+            // Logo onerror容错处理
             // 枝江娱乐Logo容错
             const zjLogo = document.getElementById('zjLogo');
             const zjLogoFallback = document.getElementById('zjLogoFallback');
-            zjLogo.onerror = function () {
-                zjLogo.style.display = 'none';
-                zjLogoFallback.style.display = 'inline-block';
-            };
+            if (zjLogo) {
+                zjLogo.onerror = function () {
+                    zjLogo.style.display = 'none';
+                    if (zjLogoFallback) zjLogoFallback.style.display = 'inline-block';
+                };
+            }
 
             // A-SOUL Logo容错
             const asoulLogo = document.getElementById('asoulLogo');
             const asoulLogoFallback = document.getElementById('asoulLogoFallback');
-            asoulLogo.onerror = function () {
-                asoulLogo.style.display = 'none';
-                asoulLogoFallback.style.display = 'inline-block';
-            };
+            if (asoulLogo) {
+                asoulLogo.onerror = function () {
+                    asoulLogo.style.display = 'none';
+                    if (asoulLogoFallback) asoulLogoFallback.style.display = 'inline-block';
+                };
+            }
         });
 
-        // 导航栏滚动效果 - 修复宽度变化问题：仅保留阴影，移除padding变化
+        // 导航栏滚动效果
         window.addEventListener('scroll', function () {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('shadow-soft'); // 仅添加阴影，不修改padding
+                navbar.classList.add('shadow-lg', 'shadow-black/30');
             } else {
-                navbar.classList.remove('shadow-soft'); // 仅移除阴影
+                navbar.classList.remove('shadow-lg', 'shadow-black/30');
             }
         });
 
