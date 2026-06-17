@@ -603,6 +603,9 @@
             maintainAspectRatio: false,
             scales: {
                 r: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
                     angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
                     grid: { color: 'rgba(255, 255, 255, 0.1)' },
                     pointLabels: {
@@ -612,8 +615,6 @@
                     ticks: {
                         backdropColor: 'transparent',
                         stepSize: 20,
-                        max: 100,
-                        min: 0.5,
                         display: false
                     }
                 }
