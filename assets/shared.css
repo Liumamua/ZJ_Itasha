@@ -1,0 +1,73 @@
+/* ============================================================
+   Z.J. Itasha - Shared Styles
+   All pages reference this file for common custom CSS.
+   ============================================================ */
+
+/* --- Font --- */
+.font-display {
+    font-family: "Space Grotesk", sans-serif;
+}
+
+/* --- Animated gradient background --- */
+.bg-gradient-animate {
+    background: linear-gradient(135deg, #08080e 0%, #0f0a1e 25%, #0a0818 50%, #0f0a1e 75%, #08080e 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+}
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* --- Five-color member gradient divider --- */
+.divider-neon {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #DB7D74 10%, #DB7D74 13%, #E799B0 27%, #E799B0 33%, #576690 47%, #576690 53%, #7252C0 67%, #7252C0 73%, #C93773 87%, #C93773 90%, transparent 100%);
+}
+
+/* --- Glass morphism cards --- */
+.glass-card {
+    background: rgba(22, 22, 42, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass-card-light {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --- Card hover effect --- */
+.card-hover {
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #08080e; }
+::-webkit-scrollbar-thumb { background: #2d2d4a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3d3d5a; }
+
+/* --- Fade-up entrance animation --- */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Mobile menu slide-in --- */
+.mobile-menu-anim {
+    animation: menuSlideIn 0.3s ease;
+}
+@keyframes menuSlideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
