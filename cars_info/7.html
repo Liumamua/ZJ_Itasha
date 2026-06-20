@@ -28,7 +28,6 @@
 <!-- 导航栏 -->
 <header class="fixed w-full top-0 z-50 h-[72px] bg-[#08080e]/30 backdrop-blur-xl border-b border-white/10" id="navbar">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex justify-between items-center">
-        <!-- Logo区域 -->
         <div class="flex items-center gap-5">
             <div class="h-10 flex items-center justify-center">
                 <img src="../pictures/logos/ZJ_Enter_light.png" alt="枝江娱乐Logo" class="h-full object-contain" id="zjLogo">
@@ -40,13 +39,9 @@
                 <span class="hidden text-xs text-gray-400" id="asoulLogoFallback">A-SOUL</span>
             </div>
         </div>
-
-        <!-- 枝痛组Logo（居中） -->
         <div class="absolute left-1/2 -translate-x-1/2 h-10 flex items-center justify-center">
             <img src="../pictures/logos/ZJ_Ita_light.png" alt="枝痛组Logo" class="h-full object-contain" id="zjitaLogo">
         </div>
-
-        <!-- 桌面端导航菜单 -->
         <nav class="hidden md:flex items-center gap-8">
             <a href="../index.html" class="text-base font-display text-gray-300 hover:text-white transition-colors duration-300 flex items-center nav-link">首页</a>
             <div class="relative group">
@@ -64,14 +59,11 @@
             <a href="../activities.html" class="text-base font-display font-medium text-gray-300 hover:text-white transition-colors duration-300 flex items-center">线下应援</a>
             <a href="../index.html#intro-section" class="text-base font-display font-medium text-gray-300 hover:text-white transition-colors duration-300 flex items-center nav-link">关于枝痛</a>
         </nav>
-
-        <!-- 移动端菜单按钮 -->
         <button class="md:hidden text-lg text-gray-300 hover:text-white transition-colors" id="menuBtn">
             <i class="fa-solid fa-bars"></i>
         </button>
     </div>
 </header>
-<!-- 移动端导航菜单 -->
 <div class="md:hidden hidden glass-card border-t border-white/5 fixed top-[72px] left-0 right-0 z-40" id="mobileMenu">
     <div class="container mx-auto px-6 py-5 flex flex-col space-y-3">
         <a href="../index.html" class="text-base font-display text-white py-2 border-b border-white/5">首页</a>
@@ -82,67 +74,59 @@
     </div>
 </div>
 
-<!-- 详情内容区 - 宽度80%，左对齐 -->
+<!-- 详情内容区 -->
 <section class="relative pt-28 pb-20 z-10 min-h-screen">
     <div class="w-[80%] mx-auto px-4">
-        <!-- 痛车名字和返回按钮同行 -->
         <div class="flex justify-between items-end mb-4 mt-6 fade-up">
-            <h1 class="text-4xl sm:text-5xl font-bold text-white font-display tracking-tight">赛车琳</h1>
-            <a href="cars_retired.html" class="inline-flex items-center text-gray-500 hover:text-white transition-colors text-sm group mb-1">
-                返回英灵殿 <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+            <h1 class="text-4xl sm:text-5xl font-bold text-white font-display tracking-tight">嘉然</h1>
+            <a href="cars_in_service.html" class="inline-flex items-center text-gray-500 hover:text-white transition-colors text-sm group mb-1">
+                返回现役痛车 <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
             </a>
         </div>
 
         <div class="divider-neon mb-12 fade-up" style="transition-delay: 0.1s"></div>
 
-        <!-- 主要内容 -->
         <div class="space-y-10 fade-up" style="transition-delay: 0.2s">
-
-            <!-- 车主说 -->
             <div>
                 <p class="text-xl sm:text-2xl text-white font-medium leading-relaxed mb-3">车主说</p>
-                <p class="text-base text-gray-500">【乃琳看我】</p>
+                <p class="text-base text-gray-500">待补充</p>
             </div>
-            <!-- 痛车信息 - 2列表格 -->
             <div>
                 <h2 class="text-lg sm:text-xl text-gray-200 font-medium mb-4">痛车信息</h2>
                 <div class="grid grid-cols-2 gap-x-12 gap-y-3 max-w-3xl">
-                    <div class="flex"><span class="text-sm text-gray-500 w-20 shrink-0">痛车主题</span><span class="text-sm text-gray-300">A-SOUL 乃琳</span></div>
-                    <div class="flex"><span class="text-sm text-gray-500 w-20 shrink-0">车型</span><span class="text-sm text-gray-300">AMG C63</span></div>
-                    <div class="flex"><span class="text-sm text-gray-500 w-20 shrink-0">常驻地区</span><span class="text-sm text-gray-300">广东·深圳</span></div>
-                    <div class="flex"><span class="text-sm text-gray-500 w-20 shrink-0">退役时间</span><span class="text-sm text-gray-300">2025-08</span></div>
+                    <div class="flex"><span class="text-sm text-gray-500 w-20 shrink-0">痛车主题</span><span class="text-sm text-gray-300">A-SOUL 嘉然</span></div>
+                    <div class="flex"><span class="text-sm text-gray-500 w-20 shrink-0">车型</span><span class="text-sm text-gray-300">BMW F20</span></div>
+                    <div class="flex"><span class="text-sm text-gray-500 w-20 shrink-0">常驻地区</span><span class="text-sm text-gray-300">待补充</span></div>
+                    <div class="flex"><span class="text-sm text-gray-500 w-20 shrink-0">完成时间</span><span class="text-sm text-gray-300">待补充</span></div>
                 </div>
             </div>
 
-            <!-- 痛车展示 -->
             <div>
                 <h2 class="text-lg sm:text-xl text-gray-200 font-medium mb-5">痛车展示</h2>
-
-                <!-- 所有图片统一尺寸，两行两列 -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <img src="../pictures/photos/cars_retired/C63_racingElieen/fig1.png" alt="视角1" class="w-full h-full object-cover">
+                    <div class="glass-card rounded-2xl overflow-hidden aspect-video">
+                        <img src="../pictures/photos/cars_in_service/F20_Jiaran/fig1.jpg" alt="视角1" class="w-full h-full object-cover">
                     </div>
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <img src="../pictures/photos/cars_retired/C63_racingElieen/fig2.png" alt="侧面" class="w-full h-full object-cover">
+                    <div class="glass-card rounded-2xl overflow-hidden aspect-video">
+                        <img src="../pictures/photos/cars_in_service/F20_Jiaran/fig2.jpg" alt="侧面" class="w-full h-full object-cover">
                     </div>
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <img src="../pictures/photos/cars_retired/C63_racingElieen/fig3.png" alt="正面" class="w-full h-full object-cover">
+                    <div class="glass-card rounded-2xl overflow-hidden aspect-video">
+                        <img src="../pictures/photos/cars_in_service/F20_Jiaran/fig3.jpg" alt="正面" class="w-full h-full object-cover">
                     </div>
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <img src="../pictures/photos/cars_retired/C63_racingElieen/fig4.png" alt="细节" class="w-full h-full object-cover">
+                    <div class="glass-card rounded-2xl overflow-hidden aspect-video">
+                        <img src="../pictures/photos/cars_in_service/F20_Jiaran/fig4.jpg" alt="细节" class="w-full h-full object-cover">
                     </div>
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <img src="../pictures/photos/cars_retired/C63_racingElieen/fig5.png" alt="细节" class="w-full h-full object-cover">
+                    <div class="glass-card rounded-2xl overflow-hidden aspect-video">
+                        <img src="../pictures/photos/cars_in_service/F20_Jiaran/fig5.jpg" alt="细节" class="w-full h-full object-cover">
                     </div>
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <img src="../pictures/photos/cars_retired/C63_racingElieen/fig6.png" alt="细节" class="w-full h-full object-cover">
+                    <div class="glass-card rounded-2xl overflow-hidden aspect-video">
+                        <img src="../pictures/photos/cars_in_service/F20_Jiaran/fig6.jpg" alt="细节" class="w-full h-full object-cover">
                     </div>
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <img src="../pictures/photos/cars_retired/C63_racingElieen/fig7.png" alt="细节" class="w-full h-full object-cover">
+                    <div class="glass-card rounded-2xl overflow-hidden aspect-video">
+                        <img src="../pictures/photos/cars_in_service/F20_Jiaran/fig7.jpg" alt="细节" class="w-full h-full object-cover">
                     </div>
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <img src="../pictures/photos/cars_retired/C63_racingElieen/fig8.png" alt="细节" class="w-full h-full object-cover">
+                    <div class="glass-card rounded-2xl overflow-hidden aspect-video">
+                        <img src="../pictures/photos/cars_in_service/F20_Jiaran/fig8.jpg" alt="细节" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -150,7 +134,6 @@
     </div>
 </section>
 
-<!-- 底部 -->
 <footer class="bg-dark-secondary/60 backdrop-blur-xl py-10 border-t border-white/5 relative z-10">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
